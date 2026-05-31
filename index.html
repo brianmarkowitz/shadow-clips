@@ -30,6 +30,12 @@
     line-height: 1.5;
   }
 
+  .btn {
+    background: var(--accent); color: #11141a; border: none; border-radius: 8px;
+    padding: 10px 16px; font-size: .95rem; font-weight: 600; cursor: pointer;
+  }
+  .btn:hover { filter: brightness(1.06); }
+
   /* layout: sticky sidebar + scrolling content */
   .layout { display: flex; align-items: flex-start; }
   #sidebar {
@@ -90,6 +96,43 @@
   }
   #toc .tocitem .pg { display: block; font-size: .72rem; color: #4f555f; }
 
+  /* ---- feedback (collapsed by default) ---- */
+  .feedback { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
+  .comments { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .comments li { position: relative; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 36px 8px 10px; }
+  .comments .who { font-size: .8rem; font-weight: 600; }
+  .comments .when { font-size: .72rem; color: #6b7280; font-weight: 400; }
+  .comments .body { font-size: .88rem; margin-top: 2px; white-space: pre-wrap; word-break: break-word; }
+  .comments .del {
+    position: absolute; top: 6px; right: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; padding: 0;
+    background: none; border: none; border-radius: 6px; color: #6b7280; cursor: pointer;
+  }
+  .comments .del:hover { color: #e06b6b; background: rgba(224,107,107,.12); }
+  .comments .del svg { width: 15px; height: 15px; }
+  .addnote {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 8px; padding: 7px 10px; cursor: pointer;
+  }
+  .addnote:hover { color: var(--text); border-color: #3a3f4a; }
+  .addnote svg { width: 17px; height: 17px; }
+  .fbform { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .fbform input, .fbform textarea {
+    background: #15181d; border: 1px solid var(--line); color: var(--text);
+    border-radius: 8px; padding: 8px 10px; font: inherit; font-size: .88rem; width: 100%;
+  }
+  .fbform textarea { resize: vertical; min-height: 56px; }
+  .fbrow { display: flex; gap: 8px; align-items: center; }
+  .fbrow .fb-name { width: auto; flex: 1 1 auto; }
+  .linkbtn {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 8px; padding: 8px 10px; font-size: .9rem; cursor: pointer; flex: 0 0 auto;
+  }
+  .linkbtn:hover { color: var(--text); border-color: #3a3f4a; }
+  .fbnote { font-size: .78rem; color: #6b7280; margin-left: 8px; }
+
   footer { color: #6b7280; font-size: .8rem; text-align: center; padding: 20px; }
   .empty { color: var(--muted); padding: 24px; }
 
@@ -125,8 +168,43 @@
 </div>
 
 <script>
+// Comments save to THIS browser's localStorage only — no server, no email.
+// Add a note with the comment icon; remove one with its trash icon. Keyed per scene id.
+const ICON_COMMENT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
+const ICON_TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>';
+
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const fmtTime = sec => { sec = Math.max(0, Math.floor(sec || 0)); const m = Math.floor(sec/60); const s = sec%60; return m + ':' + String(s).padStart(2,'0'); };
+const fmtWhen = ts => { try { return new Date(ts).toLocaleString(); } catch { return ''; } };
+
+/* ---- on-page comment store (per-browser only) ---- */
+function localKey(scene){ return 'sc_fb:' + scene; }
+function loadLocal(scene){ try { return JSON.parse(localStorage.getItem(localKey(scene)) || '[]'); } catch { return []; } }
+function saveLocal(scene, arr){ localStorage.setItem(localKey(scene), JSON.stringify(arr)); }
+
+function commentLi(c){
+  const li = document.createElement('li');
+  li.dataset.ts = c.ts || '';
+  li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
+                 `<div class="body">${esc(c.comment || '')}</div>` +
+                 `<button type="button" class="del" title="Delete comment" aria-label="Delete comment">${ICON_TRASH}</button>`;
+  return li;
+}
+function renderComments(ul, items){
+  ul.innerHTML = '';
+  if (!items || !items.length) { ul.hidden = true; return; }
+  ul.hidden = false;
+  items.slice().sort((a,b) => (a.ts||0) - (b.ts||0)).forEach(c => ul.appendChild(commentLi(c)));
+}
+function renderCommentsAppend(ul, c){ ul.hidden = false; ul.appendChild(commentLi(c)); }
+
+function submitComment(clip, payload, ul, note){
+  payload.ts = Date.now();
+  renderCommentsAppend(ul, payload);
+  const arr = loadLocal(payload.scene); arr.push(payload); saveLocal(payload.scene, arr);
+  note.textContent = 'Saved on this page.';
+}
 
 /* ---- build gallery + sidebar ---- */
 function loadClips(){
@@ -145,6 +223,8 @@ function loadClips(){
       clips.forEach((c, i) => {
         let id = slug(c.id || c.title) || ('clip-' + i);
         if (seen[id]) id = id + '-' + i; seen[id] = true;
+        c._scene = c.id || id;
+
         const cues = (c.cue_in || c.cue_out)
           ? `<p class="cues"><b>Cue in:</b> “${esc(c.cue_in || '')}”${c.cue_out ? ` &nbsp;·&nbsp; <b>out:</b> “${esc(c.cue_out)}”` : ''}</p>`
           : '';
@@ -176,6 +256,19 @@ function loadClips(){
             ${cues}
             ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
             <p class="dl"><a href="${esc(c.file)}" download>⬇ Download .mp4</a></p>
+            <section class="feedback">
+              <ul class="comments" hidden></ul>
+              <button type="button" class="addnote" title="Add comment" aria-label="Add comment">${ICON_COMMENT}</button>
+              <span class="fbnote"></span>
+              <form class="fbform" hidden autocomplete="off">
+                <textarea class="fb-text" placeholder="Your comment…" maxlength="2000" required></textarea>
+                <div class="fbrow">
+                  <input class="fb-name" type="text" placeholder="Name (optional)" maxlength="60">
+                  <button type="button" class="linkbtn fb-tc" title="Insert current timecode">⏱</button>
+                  <button type="submit" class="btn">Send</button>
+                </div>
+              </form>
+            </section>
           </div>`;
         g.appendChild(card);
 
@@ -184,6 +277,40 @@ function loadClips(){
         li.innerHTML = `<a href="#${id}" data-target="${id}">${esc(c.title ?? c.file)}` +
           (c.page ? `<span class="pg">Page ${esc(c.page)}</span>` : '') + `</a>`;
         toc.appendChild(li);
+
+        // wire feedback
+        const ul = card.querySelector('.comments');
+        const form = card.querySelector('.fbform');
+        const note = card.querySelector('.fbnote');
+        const video = card.querySelector('video');
+        const addBtn = card.querySelector('.addnote');
+        renderComments(ul, loadLocal(c._scene));
+        // delete a comment via its trash icon (event-delegated)
+        ul.addEventListener('click', (e) => {
+          const btn = e.target.closest('.del'); if (!btn) return;
+          const li = btn.closest('li'); const ts = Number(li.dataset.ts);
+          saveLocal(c._scene, loadLocal(c._scene).filter(x => x.ts !== ts));
+          li.remove();
+          if (!ul.children.length) ul.hidden = true;
+        });
+        addBtn.addEventListener('click', () => {
+          form.hidden = false; addBtn.hidden = true; note.textContent = '';
+          card.querySelector('.fb-text').focus();
+        });
+        card.querySelector('.fb-tc').addEventListener('click', () => {
+          const ta = card.querySelector('.fb-text');
+          ta.value = (ta.value ? ta.value.replace(/\s*$/, ' ') : '') + '[' + fmtTime(video.currentTime) + '] ';
+          ta.focus();
+        });
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = card.querySelector('.fb-name').value.trim();
+          const text = card.querySelector('.fb-text').value.trim();
+          if (!text) return;
+          submitComment(c, { scene: c._scene, title: c.title, page: c.page, name, comment: text }, ul, note);
+          card.querySelector('.fb-text').value = '';
+          form.hidden = true; addBtn.hidden = false;
+        });
       });
 
       // scrollspy

@@ -24,7 +24,8 @@ projection (light everywhere except the figure reads as a cast shadow).
      "review": { "projectionist": "approved", "director": "pending" }
    }
    ```
-   - `id` must be stable and unique — it keys the card anchor and sidebar link.
+   - `id` must be stable and unique — it keys the card anchor, the sidebar link,
+     and the clip's saved comments.
    - `review` is optional metadata for tracking sign-off; it is **not** shown on
      the page right now (status badges were removed — only a Page badge renders).
 3. Commit and push — GitHub Pages serves the update automatically.
@@ -36,6 +37,9 @@ projection (light everywhere except the figure reads as a cast shadow).
   **Download .mp4** link.
 - The site is **open** — no passcode. It's an unlisted link (`noindex`); share
   the URL only with crew.
-- There is **no on-page commenting** — clips are view/download only. Collect crew
-  notes out-of-band (text/email). The old comment box (saved per-browser, never
-  shared) was removed.
+- Each clip has a **comment icon** (💬) to add a note and a **timecode** button
+  (⏱) that stamps the video's current time into the note. Each saved comment has
+  a **trash icon** (🗑) to delete it.
+- **Comments save to that viewer's own browser only** (`localStorage`, keyed by
+  clip `id`) — no server, no email. Notes are not shared between people or
+  devices; treat them as a personal scratch pad while reviewing.
