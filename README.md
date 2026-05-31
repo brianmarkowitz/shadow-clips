@@ -24,22 +24,18 @@ projection (light everywhere except the figure reads as a cast shadow).
      "review": { "projectionist": "approved", "director": "pending" }
    }
    ```
-   - `id` keys the clip's feedback thread — keep it stable and unique.
+   - `id` must be stable and unique — it keys the card anchor and sidebar link.
    - `review` is optional metadata for tracking sign-off; it is **not** shown on
      the page right now (status badges were removed — only a Page badge renders).
 3. Commit and push — GitHub Pages serves the update automatically.
 
-## Crew navigation & feedback
+## Crew navigation
 
 - The left **Chapters** sidebar is generated from `clips.json`; built scenes
   show as cards, not-yet-built scenes appear in the menu only. Each clip has a
   **Download .mp4** link.
-- Each clip has a **＋ Comment** box with an **Insert timecode** button (grabs
-  the video's current time so notes can point at an exact moment).
 - The site is **open** — no passcode. It's an unlisted link (`noindex`); share
   the URL only with crew.
-- **Comments save on the page only (per browser); no email is sent.** Email send
-  was turned off because the work network blocks third-party form services. To
-  turn it back on (works behind the firewall, no third party), deploy the Google
-  Apps Script in [`feedback-backend/`](feedback-backend/) and POST to its `/exec`
-  URL from `submitComment()` in `index.html`.
+- There is **no on-page commenting** — clips are view/download only. Collect crew
+  notes out-of-band (text/email). The old comment box (saved per-browser, never
+  shared) was removed.

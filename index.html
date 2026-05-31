@@ -30,12 +30,6 @@
     line-height: 1.5;
   }
 
-  .btn {
-    background: var(--accent); color: #11141a; border: none; border-radius: 8px;
-    padding: 10px 16px; font-size: .95rem; font-weight: 600; cursor: pointer;
-  }
-  .btn:hover { filter: brightness(1.06); }
-
   /* layout: sticky sidebar + scrolling content */
   .layout { display: flex; align-items: flex-start; }
   #sidebar {
@@ -96,33 +90,6 @@
   }
   #toc .tocitem .pg { display: block; font-size: .72rem; color: #4f555f; }
 
-  /* ---- feedback (collapsed by default) ---- */
-  .feedback { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
-  .comments { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .comments li { background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
-  .comments .who { font-size: .8rem; font-weight: 600; }
-  .comments .when { font-size: .72rem; color: #6b7280; font-weight: 400; }
-  .comments .body { font-size: .88rem; margin-top: 2px; white-space: pre-wrap; word-break: break-word; }
-  .addnote {
-    background: none; border: 1px solid var(--line); color: var(--muted);
-    border-radius: 8px; padding: 7px 12px; font-size: .85rem; cursor: pointer;
-  }
-  .addnote:hover { color: var(--text); border-color: #3a3f4a; }
-  .fbform { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-  .fbform input, .fbform textarea {
-    background: #15181d; border: 1px solid var(--line); color: var(--text);
-    border-radius: 8px; padding: 8px 10px; font: inherit; font-size: .88rem; width: 100%;
-  }
-  .fbform textarea { resize: vertical; min-height: 56px; }
-  .fbrow { display: flex; gap: 8px; align-items: center; }
-  .fbrow .fb-name { width: auto; flex: 1 1 auto; }
-  .linkbtn {
-    background: none; border: 1px solid var(--line); color: var(--muted);
-    border-radius: 8px; padding: 8px 10px; font-size: .9rem; cursor: pointer; flex: 0 0 auto;
-  }
-  .linkbtn:hover { color: var(--text); border-color: #3a3f4a; }
-  .fbnote { font-size: .78rem; color: #6b7280; margin-left: 8px; }
-
   footer { color: #6b7280; font-size: .8rem; text-align: center; padding: 20px; }
   .empty { color: var(--muted); padding: 24px; }
 
@@ -158,51 +125,8 @@
 </div>
 
 <script>
-/* ============================ CONFIG ============================ */
-const NOTIFY_EMAIL = "bmarko@gmail.com";
-// Email send is OFF for now: the work network (Zscaler) blocks third-party form
-// services (FormSubmit/Web3Forms). Comments save per-browser for on-page display
-// only. To turn email back on later, deploy the Google Apps Script in
-// feedback-backend/ (Google passes the firewall) and POST to its /exec URL from
-// submitComment() — see that folder's README.
-/* =============================================================== */
-
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-const fmtTime = sec => { sec = Math.max(0, Math.floor(sec || 0)); const m = Math.floor(sec/60); const s = sec%60; return m + ':' + String(s).padStart(2,'0'); };
-const fmtWhen = ts => { try { return new Date(ts).toLocaleString(); } catch { return ''; } };
-
-/* ---- on-page comment store (per-browser display; email send is separate) ---- */
-function localKey(scene){ return 'sc_fb:' + scene; }
-function loadLocal(scene){ try { return JSON.parse(localStorage.getItem(localKey(scene)) || '[]'); } catch { return []; } }
-function saveLocal(scene, arr){ localStorage.setItem(localKey(scene), JSON.stringify(arr)); }
-
-function renderComments(ul, items){
-  ul.innerHTML = '';
-  if (!items || !items.length) { ul.hidden = true; return; }
-  ul.hidden = false;
-  items.slice().sort((a,b) => (a.ts||0) - (b.ts||0)).forEach(c => {
-    const li = document.createElement('li');
-    li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
-                   `<div class="body">${esc(c.comment || '')}</div>`;
-    ul.appendChild(li);
-  });
-}
-
-function submitComment(clip, payload, ul, note){
-  payload.ts = Date.now();
-  // save + show on this page (email send intentionally off — see CONFIG note)
-  renderCommentsAppend(ul, payload);
-  const arr = loadLocal(payload.scene); arr.push(payload); saveLocal(payload.scene, arr);
-  note.textContent = 'Saved on this page.';
-}
-function renderCommentsAppend(ul, c){
-  ul.hidden = false;
-  const li = document.createElement('li');
-  li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
-                 `<div class="body">${esc(c.comment || '')}</div>`;
-  ul.appendChild(li);
-}
 
 /* ---- build gallery + sidebar ---- */
 function loadClips(){
@@ -221,8 +145,6 @@ function loadClips(){
       clips.forEach((c, i) => {
         let id = slug(c.id || c.title) || ('clip-' + i);
         if (seen[id]) id = id + '-' + i; seen[id] = true;
-        c._scene = c.id || id;
-
         const cues = (c.cue_in || c.cue_out)
           ? `<p class="cues"><b>Cue in:</b> “${esc(c.cue_in || '')}”${c.cue_out ? ` &nbsp;·&nbsp; <b>out:</b> “${esc(c.cue_out)}”` : ''}</p>`
           : '';
@@ -254,19 +176,6 @@ function loadClips(){
             ${cues}
             ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
             <p class="dl"><a href="${esc(c.file)}" download>⬇ Download .mp4</a></p>
-            <section class="feedback">
-              <ul class="comments" hidden></ul>
-              <button type="button" class="addnote">＋ Comment</button>
-              <span class="fbnote"></span>
-              <form class="fbform" hidden autocomplete="off">
-                <textarea class="fb-text" placeholder="Your comment…" maxlength="2000" required></textarea>
-                <div class="fbrow">
-                  <input class="fb-name" type="text" placeholder="Name (optional)" maxlength="60">
-                  <button type="button" class="linkbtn fb-tc" title="Insert current timecode">⏱</button>
-                  <button type="submit" class="btn">Send</button>
-                </div>
-              </form>
-            </section>
           </div>`;
         g.appendChild(card);
 
@@ -275,32 +184,6 @@ function loadClips(){
         li.innerHTML = `<a href="#${id}" data-target="${id}">${esc(c.title ?? c.file)}` +
           (c.page ? `<span class="pg">Page ${esc(c.page)}</span>` : '') + `</a>`;
         toc.appendChild(li);
-
-        // wire feedback
-        const ul = card.querySelector('.comments');
-        const form = card.querySelector('.fbform');
-        const note = card.querySelector('.fbnote');
-        const video = card.querySelector('video');
-        const addBtn = card.querySelector('.addnote');
-        renderComments(ul, loadLocal(c._scene));
-        addBtn.addEventListener('click', () => {
-          form.hidden = false; addBtn.hidden = true; note.textContent = '';
-          card.querySelector('.fb-text').focus();
-        });
-        card.querySelector('.fb-tc').addEventListener('click', () => {
-          const ta = card.querySelector('.fb-text');
-          ta.value = (ta.value ? ta.value.replace(/\s*$/, ' ') : '') + '[' + fmtTime(video.currentTime) + '] ';
-          ta.focus();
-        });
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const name = card.querySelector('.fb-name').value.trim();
-          const text = card.querySelector('.fb-text').value.trim();
-          if (!text) return;
-          submitComment(c, { scene: c._scene, title: c.title, page: c.page, name, comment: text }, ul, note);
-          card.querySelector('.fb-text').value = '';
-          form.hidden = true; addBtn.hidden = false;
-        });
       });
 
       // scrollspy
