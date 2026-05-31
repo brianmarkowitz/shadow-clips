@@ -6,21 +6,72 @@
 <meta name="robots" content="noindex">
 <title>Shadow Clips — The Reluctant Resurrection of Sherlock Holmes</title>
 <style>
-  :root { color-scheme: dark; }
+  :root {
+    color-scheme: dark;
+    --bg: #16181d;
+    --panel: #1d2027;
+    --line: #2a2e37;
+    --text: #e7e9ee;
+    --muted: #9aa0ad;
+    --accent: #cfd3dc;
+    --sidebar-w: 248px;
+  }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #16181d;
-    color: #e7e9ee;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.5;
   }
+
+  /* layout: sticky sidebar + scrolling content */
+  .layout { display: flex; align-items: flex-start; }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    flex: 0 0 var(--sidebar-w);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 24px 16px;
+    border-right: 1px solid var(--line);
+    background: #131519;
+  }
+  #sidebar .brand { font-size: .82rem; font-weight: 650; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--muted); margin: 0 8px 14px; }
+  #toc { list-style: none; margin: 0; padding: 0; }
+  #toc li { margin: 0; }
+  #toc a {
+    display: block;
+    padding: 9px 10px;
+    border-radius: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .9rem;
+    border-left: 3px solid transparent;
+    transition: background .12s, color .12s, border-color .12s;
+  }
+  #toc a:hover { background: #20242c; color: var(--text); }
+  #toc a.active {
+    background: #20242c;
+    color: var(--text);
+    border-left-color: var(--accent);
+    font-weight: 600;
+  }
+  #toc a .pg { display: block; font-size: .72rem; color: #6b7280; font-weight: 400; }
+
+  .content { flex: 1 1 auto; min-width: 0; }
+
   header {
     padding: 32px 24px 16px;
-    border-bottom: 1px solid #2a2e37;
+    border-bottom: 1px solid var(--line);
   }
   h1 { margin: 0 0 4px; font-size: 1.4rem; font-weight: 650; }
-  header p { margin: 0; color: #9aa0ad; font-size: .92rem; }
+  header p { margin: 0; color: var(--muted); font-size: .92rem; }
   main {
     max-width: 1100px;
     margin: 0 auto;
@@ -30,12 +81,13 @@
     gap: 24px;
   }
   .card {
-    background: #1d2027;
-    border: 1px solid #2a2e37;
+    background: var(--panel);
+    border: 1px solid var(--line);
     border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    scroll-margin-top: 16px;
   }
   .card video {
     width: 100%;
@@ -53,7 +105,7 @@
     letter-spacing: .03em;
     text-transform: uppercase;
     color: #11141a;
-    background: #cfd3dc;
+    background: var(--accent);
     border-radius: 999px;
     padding: 2px 9px;
     margin-bottom: 8px;
@@ -61,48 +113,105 @@
   .meta .src { color: #7f8694; font-size: .82rem; margin: 6px 0 0; }
   .meta .notes { color: #b6bcc8; font-size: .9rem; margin: 8px 0 0; }
   footer { color: #6b7280; font-size: .8rem; text-align: center; padding: 20px; }
-  .empty { color: #9aa0ad; padding: 24px; }
+  .empty { color: var(--muted); padding: 24px; }
+
+  /* mobile: sidebar becomes a static strip above the content */
+  @media (max-width: 760px) {
+    .layout { display: block; }
+    #sidebar {
+      width: auto;
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding: 16px;
+    }
+    #toc { display: flex; flex-wrap: wrap; gap: 6px; }
+    #toc a { border-left: none; border-bottom: 3px solid transparent; padding: 7px 10px; }
+    #toc a.active { border-left: none; border-bottom-color: var(--accent); }
+    #toc a .pg { display: none; }
+    main { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>Shadow Clips</h1>
-  <p><em>The Reluctant Resurrection of Sherlock Holmes</em> — shadow-projection silhouettes</p>
-</header>
-<main id="gallery"><p class="empty">Loading clips…</p></main>
-<footer>Silhouettes rendered for community-theater scrim projection. Black-on-white = cast shadow.</footer>
+<div class="layout">
+  <nav id="sidebar" aria-label="Scene navigation">
+    <p class="brand">Chapters</p>
+    <ul id="toc"><li class="empty">Loading…</li></ul>
+  </nav>
+  <div class="content">
+    <header>
+      <h1>Shadow Clips</h1>
+      <p><em>The Reluctant Resurrection of Sherlock Holmes</em> — shadow-projection silhouettes</p>
+    </header>
+    <main id="gallery"><p class="empty">Loading clips…</p></main>
+    <footer>Silhouettes rendered for community-theater scrim projection. Black-on-white = cast shadow.</footer>
+  </div>
+</div>
 
 <script>
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
 fetch('clips.json', { cache: 'no-store' })
   .then(r => r.json())
   .then(clips => {
     const g = document.getElementById('gallery');
+    const toc = document.getElementById('toc');
     if (!Array.isArray(clips) || clips.length === 0) {
       g.innerHTML = '<p class="empty">No clips published yet.</p>';
+      toc.innerHTML = '<li class="empty" style="padding:0 10px;color:#6b7280;font-size:.85rem">No chapters yet</li>';
       return;
     }
     g.innerHTML = '';
-    for (const c of clips) {
+    toc.innerHTML = '';
+    const seen = {};
+    clips.forEach((c, i) => {
+      let id = slug(c.title || '') || ('clip-' + i);
+      if (seen[id]) id = id + '-' + i;
+      seen[id] = true;
+
       const card = document.createElement('div');
       card.className = 'card';
-      const poster = c.poster ? ` poster="${c.poster}"` : '';
+      card.id = id;
+      const poster = c.poster ? ` poster="${esc(c.poster)}"` : '';
       card.innerHTML = `
         <video controls preload="metadata"${poster}>
-          <source src="${c.file}" type="video/mp4">
-          Your browser can’t play this video. <a href="${c.file}">Download it</a>.
+          <source src="${esc(c.file)}" type="video/mp4">
+          Your browser can’t play this video. <a href="${esc(c.file)}">Download it</a>.
         </video>
         <div class="meta">
-          ${c.page ? `<span class="badge">Page ${c.page}</span>` : ''}
-          <h2>${c.title ?? c.file}</h2>
-          ${c.source ? `<p class="src">Source: ${c.source}</p>` : ''}
-          ${c.notes ? `<p class="notes">${c.notes}</p>` : ''}
+          ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
+          <h2>${esc(c.title ?? c.file)}</h2>
+          ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
+          ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
         </div>`;
       g.appendChild(card);
-    }
+
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#${id}" data-target="${id}">${esc(c.title ?? c.file)}` +
+        (c.page ? `<span class="pg">Page ${esc(c.page)}</span>` : '') + `</a>`;
+      toc.appendChild(li);
+    });
+
+    // scrollspy: highlight the chapter whose card is in view
+    const links = Object.fromEntries(
+      [...toc.querySelectorAll('a')].map(a => [a.dataset.target, a]));
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          for (const a of Object.values(links)) a.classList.remove('active');
+          const a = links[en.target.id];
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    g.querySelectorAll('.card').forEach(card => spy.observe(card));
   })
   .catch(err => {
     document.getElementById('gallery').innerHTML =
-      '<p class="empty">Could not load clips.json — ' + err + '</p>';
+      '<p class="empty">Could not load clips.json — ' + esc(err) + '</p>';
   });
 </script>
 </body>
