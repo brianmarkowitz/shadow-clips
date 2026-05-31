@@ -83,14 +83,18 @@
   .badge.pend { color: #fff4df; background: rgba(217,162,58,.18); border: 1px solid var(--pend); }
   .meta .src { color: #7f8694; font-size: .82rem; margin: 6px 0 0; }
   .meta .notes { color: #b6bcc8; font-size: .9rem; margin: 8px 0 0; }
-  .meta .dl { margin: 10px 0 0; }
-  .meta .dl a {
+  /* download + add-comment share one row to save vertical space */
+  .meta .actions {
+    display: flex; align-items: center; gap: 8px;
+    margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line);
+  }
+  .meta .actions .dl {
     display: inline-flex; align-items: center; justify-content: center;
     border: 1px solid var(--line); color: var(--muted);
     border-radius: 8px; padding: 7px 10px; text-decoration: none;
   }
-  .meta .dl a:hover { color: var(--text); border-color: #3a3f4a; }
-  .meta .dl a svg { width: 17px; height: 17px; }
+  .meta .actions .dl:hover { color: var(--text); border-color: #3a3f4a; }
+  .meta .actions .dl svg { width: 17px; height: 17px; }
   .meta .cues { color: #8a91a0; font-size: .82rem; margin: 6px 0 0; }
   .meta .cues b { color: #aab1bf; font-weight: 600; }
 
@@ -102,7 +106,7 @@
   #toc .tocitem .pg { display: block; font-size: .72rem; color: #4f555f; }
 
   /* ---- feedback (collapsed by default) ---- */
-  .feedback { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
+  .feedback { margin-top: 10px; }
   .comments { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .comments li { position: relative; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 36px 8px 10px; }
   .comments .who { font-size: .8rem; font-weight: 600; }
@@ -261,11 +265,13 @@ function loadClips(){
             ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
             ${cues}
             ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
-            <p class="dl"><a href="${esc(c.file)}" download title="Download .mp4" aria-label="Download .mp4">${ICON_DOWNLOAD}</a></p>
-            <section class="feedback">
-              <ul class="comments" hidden></ul>
+            <div class="actions">
+              <a class="dl" href="${esc(c.file)}" download title="Download .mp4" aria-label="Download .mp4">${ICON_DOWNLOAD}</a>
               <button type="button" class="addnote" title="Add comment" aria-label="Add comment">${ICON_COMMENT}</button>
               <span class="fbnote"></span>
+            </div>
+            <section class="feedback">
+              <ul class="comments" hidden></ul>
               <form class="fbform" hidden autocomplete="off">
                 <textarea class="fb-text" placeholder="Your comment…" maxlength="2000" required></textarea>
                 <div class="fbrow">
