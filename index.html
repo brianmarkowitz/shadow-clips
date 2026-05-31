@@ -10,13 +10,17 @@
     color-scheme: dark;
     --bg: #16181d;
     --panel: #1d2027;
+    --panel2: #22262f;
     --line: #2a2e37;
     --text: #e7e9ee;
     --muted: #9aa0ad;
     --accent: #cfd3dc;
+    --ok: #3ea96b;
+    --pend: #d9a23a;
     --sidebar-w: 248px;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
@@ -26,106 +30,109 @@
     line-height: 1.5;
   }
 
+  /* ---- passcode gate ---- */
+  #gate {
+    position: fixed; inset: 0; z-index: 100;
+    background: #101216;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; padding: 24px; text-align: center;
+  }
+  #gate h1 { margin: 0; font-size: 1.3rem; }
+  #gate p { margin: 0; color: var(--muted); font-size: .9rem; }
+  #gate form { display: flex; gap: 8px; margin-top: 6px; }
+  #gate input {
+    background: var(--panel); border: 1px solid var(--line); color: var(--text);
+    border-radius: 8px; padding: 10px 12px; font-size: 1rem; width: 220px;
+  }
+  .btn {
+    background: var(--accent); color: #11141a; border: none; border-radius: 8px;
+    padding: 10px 16px; font-size: .95rem; font-weight: 600; cursor: pointer;
+  }
+  .btn:hover { filter: brightness(1.06); }
+  #gate .err { color: #e06b6b; font-size: .85rem; min-height: 1em; }
+  body.locked { overflow: hidden; }
+
   /* layout: sticky sidebar + scrolling content */
   .layout { display: flex; align-items: flex-start; }
-
   #sidebar {
-    width: var(--sidebar-w);
-    flex: 0 0 var(--sidebar-w);
-    position: sticky;
-    top: 0;
-    align-self: flex-start;
-    height: 100vh;
-    overflow-y: auto;
-    padding: 24px 16px;
-    border-right: 1px solid var(--line);
-    background: #131519;
+    width: var(--sidebar-w); flex: 0 0 var(--sidebar-w);
+    position: sticky; top: 0; align-self: flex-start;
+    height: 100vh; overflow-y: auto; padding: 24px 16px;
+    border-right: 1px solid var(--line); background: #131519;
   }
   #sidebar .brand { font-size: .82rem; font-weight: 650; letter-spacing: .04em;
     text-transform: uppercase; color: var(--muted); margin: 0 8px 14px; }
   #toc { list-style: none; margin: 0; padding: 0; }
-  #toc li { margin: 0; }
   #toc a {
-    display: block;
-    padding: 9px 10px;
-    border-radius: 8px;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: .9rem;
-    border-left: 3px solid transparent;
+    display: block; padding: 9px 10px; border-radius: 8px; color: var(--muted);
+    text-decoration: none; font-size: .9rem; border-left: 3px solid transparent;
     transition: background .12s, color .12s, border-color .12s;
   }
   #toc a:hover { background: #20242c; color: var(--text); }
-  #toc a.active {
-    background: #20242c;
-    color: var(--text);
-    border-left-color: var(--accent);
-    font-weight: 600;
-  }
+  #toc a.active { background: #20242c; color: var(--text); border-left-color: var(--accent); font-weight: 600; }
   #toc a .pg { display: block; font-size: .72rem; color: #6b7280; font-weight: 400; }
 
   .content { flex: 1 1 auto; min-width: 0; }
-
-  header {
-    padding: 32px 24px 16px;
-    border-bottom: 1px solid var(--line);
-  }
+  header { padding: 32px 24px 16px; border-bottom: 1px solid var(--line); }
   h1 { margin: 0 0 4px; font-size: 1.4rem; font-weight: 650; }
   header p { margin: 0; color: var(--muted); font-size: .92rem; }
   main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    gap: 24px;
+    max-width: 1100px; margin: 0 auto; padding: 24px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 24px;
   }
   .card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    scroll-margin-top: 16px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; display: flex; flex-direction: column; scroll-margin-top: 16px;
   }
   .card video {
-    width: 100%;
-    display: block;
-    background: #fff; /* silhouettes are black-on-white */
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
+    width: 100%; display: block; background: #fff; aspect-ratio: 16 / 9; object-fit: contain;
   }
   .meta { padding: 14px 16px 18px; }
   .meta h2 { margin: 0 0 4px; font-size: 1.05rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
   .badge {
-    display: inline-block;
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-    color: #11141a;
-    background: var(--accent);
-    border-radius: 999px;
-    padding: 2px 9px;
-    margin-bottom: 8px;
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: .72rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase;
+    color: #11141a; background: var(--accent); border-radius: 999px; padding: 2px 9px;
   }
+  .badge.ok   { color: #eafff2; background: rgba(62,169,107,.22); border: 1px solid var(--ok); }
+  .badge.pend { color: #fff4df; background: rgba(217,162,58,.18); border: 1px solid var(--pend); }
   .meta .src { color: #7f8694; font-size: .82rem; margin: 6px 0 0; }
   .meta .notes { color: #b6bcc8; font-size: .9rem; margin: 8px 0 0; }
+  .meta .dl { margin: 10px 0 0; }
+  .meta .dl a { color: var(--muted); font-size: .82rem; text-decoration: none; }
+  .meta .dl a:hover { color: var(--text); text-decoration: underline; }
+
+  /* ---- feedback ---- */
+  .feedback { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
+  .feedback h3 { margin: 0 0 8px; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .comments { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .comments li { background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+  .comments .who { font-size: .8rem; font-weight: 600; }
+  .comments .when { font-size: .72rem; color: #6b7280; font-weight: 400; }
+  .comments .body { font-size: .88rem; margin-top: 2px; white-space: pre-wrap; word-break: break-word; }
+  .comments .none { color: #6b7280; font-size: .84rem; font-style: italic; }
+  .fbform { display: flex; flex-direction: column; gap: 8px; }
+  .fbform input, .fbform textarea {
+    background: #15181d; border: 1px solid var(--line); color: var(--text);
+    border-radius: 8px; padding: 8px 10px; font: inherit; font-size: .88rem; width: 100%;
+  }
+  .fbform textarea { resize: vertical; min-height: 60px; }
+  .fbrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .linkbtn {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 8px; padding: 6px 10px; font-size: .8rem; cursor: pointer;
+  }
+  .linkbtn:hover { color: var(--text); border-color: #3a3f4a; }
+  .fbnote { font-size: .78rem; color: #6b7280; min-height: 1em; }
+
   footer { color: #6b7280; font-size: .8rem; text-align: center; padding: 20px; }
   .empty { color: var(--muted); padding: 24px; }
 
-  /* mobile: sidebar becomes a static strip above the content */
   @media (max-width: 760px) {
     .layout { display: block; }
-    #sidebar {
-      width: auto;
-      position: static;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid var(--line);
-      padding: 16px;
-    }
+    #sidebar { width: auto; position: static; height: auto; border-right: none;
+      border-bottom: 1px solid var(--line); padding: 16px; }
     #toc { display: flex; flex-wrap: wrap; gap: 6px; }
     #toc a { border-left: none; border-bottom: 3px solid transparent; padding: 7px 10px; }
     #toc a.active { border-left: none; border-bottom-color: var(--accent); }
@@ -134,8 +141,20 @@
   }
 </style>
 </head>
-<body>
-<div class="layout">
+<body class="locked">
+
+<!-- ======= passcode gate (soft, client-side only) ======= -->
+<div id="gate">
+  <h1>Shadow Clips</h1>
+  <p>Enter the crew passcode to view.</p>
+  <form id="gateForm">
+    <input id="gateInput" type="password" autocomplete="current-password" placeholder="Passcode" autofocus>
+    <button class="btn" type="submit">Enter</button>
+  </form>
+  <div class="err" id="gateErr"></div>
+</div>
+
+<div class="layout" hidden id="app">
   <nav id="sidebar" aria-label="Scene navigation">
     <p class="brand">Chapters</p>
     <ul id="toc"><li class="empty">Loading…</li></ul>
@@ -151,68 +170,213 @@
 </div>
 
 <script>
-const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+/* ============================ CONFIG ============================ */
+// Set FEEDBACK_URL to a deployed Google Apps Script /exec URL to make crew
+// comments SHARED (visible to everyone) and EMAILED to NOTIFY_EMAIL.
+// While it is "", comments are stored in this browser and submitting opens a
+// pre-filled email to NOTIFY_EMAIL so nothing is lost.
+const FEEDBACK_URL = "";
+const NOTIFY_EMAIL = "bmarko@gmail.com";
+// SHA-256 of the crew passcode (plaintext kept out of the source).
+const PASS_HASH = "c25eb61132a9729007e099f738d0a648daa8858d340a0fc35a0d2b09e5b93abb";
+/* =============================================================== */
 
-fetch('clips.json', { cache: 'no-store' })
-  .then(r => r.json())
-  .then(clips => {
-    const g = document.getElementById('gallery');
-    const toc = document.getElementById('toc');
-    if (!Array.isArray(clips) || clips.length === 0) {
-      g.innerHTML = '<p class="empty">No clips published yet.</p>';
-      toc.innerHTML = '<li class="empty" style="padding:0 10px;color:#6b7280;font-size:.85rem">No chapters yet</li>';
-      return;
-    }
-    g.innerHTML = '';
-    toc.innerHTML = '';
-    const seen = {};
-    clips.forEach((c, i) => {
-      let id = slug(c.title || '') || ('clip-' + i);
-      if (seen[id]) id = id + '-' + i;
-      seen[id] = true;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const slug = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const fmtTime = sec => { sec = Math.max(0, Math.floor(sec || 0)); const m = Math.floor(sec/60); const s = sec%60; return m + ':' + String(s).padStart(2,'0'); };
+const fmtWhen = ts => { try { return new Date(ts).toLocaleString(); } catch { return ''; } };
 
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.id = id;
-      const poster = c.poster ? ` poster="${esc(c.poster)}"` : '';
-      card.innerHTML = `
-        <video controls preload="metadata"${poster}>
-          <source src="${esc(c.file)}" type="video/mp4">
-          Your browser can’t play this video. <a href="${esc(c.file)}">Download it</a>.
-        </video>
-        <div class="meta">
-          ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
-          <h2>${esc(c.title ?? c.file)}</h2>
-          ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
-          ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
-        </div>`;
-      g.appendChild(card);
+async function sha256hex(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
 
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="#${id}" data-target="${id}">${esc(c.title ?? c.file)}` +
-        (c.page ? `<span class="pg">Page ${esc(c.page)}</span>` : '') + `</a>`;
-      toc.appendChild(li);
-    });
+/* ---- passcode gate ---- */
+const gate = document.getElementById('gate');
+function unlock() {
+  sessionStorage.setItem('sc_unlocked', '1');
+  gate.hidden = true;
+  document.body.classList.remove('locked');
+  const app = document.getElementById('app');
+  app.hidden = false;
+  if (!app.dataset.loaded) { app.dataset.loaded = '1'; loadClips(); }
+}
+if (sessionStorage.getItem('sc_unlocked') === '1') { unlock(); }
+document.getElementById('gateForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const val = document.getElementById('gateInput').value;
+  const err = document.getElementById('gateErr');
+  err.textContent = '';
+  if (await sha256hex(val) === PASS_HASH) { unlock(); }
+  else { err.textContent = 'Incorrect passcode.'; document.getElementById('gateInput').select(); }
+});
 
-    // scrollspy: highlight the chapter whose card is in view
-    const links = Object.fromEntries(
-      [...toc.querySelectorAll('a')].map(a => [a.dataset.target, a]));
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          for (const a of Object.values(links)) a.classList.remove('active');
-          const a = links[en.target.id];
-          if (a) a.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    g.querySelectorAll('.card').forEach(card => spy.observe(card));
-  })
-  .catch(err => {
-    document.getElementById('gallery').innerHTML =
-      '<p class="empty">Could not load clips.json — ' + esc(err) + '</p>';
+/* ---- comments backend (graceful fallback) ---- */
+function localKey(scene){ return 'sc_fb:' + scene; }
+function loadLocal(scene){ try { return JSON.parse(localStorage.getItem(localKey(scene)) || '[]'); } catch { return []; } }
+function saveLocal(scene, arr){ localStorage.setItem(localKey(scene), JSON.stringify(arr)); }
+
+// Apps Script can't send CORS headers for fetch reads, so GET via JSONP.
+function jsonpGet(scene){
+  return new Promise(resolve => {
+    if (!FEEDBACK_URL) return resolve(loadLocal(scene));
+    const cb = 'sc_cb_' + Math.random().toString(36).slice(2);
+    const s = document.createElement('script');
+    const done = (d) => { try { delete window[cb]; } catch {} s.remove(); resolve(Array.isArray(d) ? d : (d && d.comments) || []); };
+    window[cb] = done;
+    s.onerror = () => done([]);
+    s.src = FEEDBACK_URL + (FEEDBACK_URL.includes('?') ? '&' : '?') + 'scene=' + encodeURIComponent(scene) + '&callback=' + cb;
+    document.body.appendChild(s);
   });
+}
+
+function renderComments(ul, items){
+  ul.innerHTML = '';
+  if (!items.length) { ul.innerHTML = '<li class="none">No notes yet — be the first.</li>'; return; }
+  items.slice().sort((a,b) => (a.ts||0) - (b.ts||0)).forEach(c => {
+    const li = document.createElement('li');
+    li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
+                   `<div class="body">${esc(c.comment || '')}</div>`;
+    ul.appendChild(li);
+  });
+}
+
+function submitComment(clip, payload, ul, note){
+  payload.ts = Date.now();
+  if (FEEDBACK_URL) {
+    // fire-and-forget POST (no-cors); the script stores it + emails NOTIFY_EMAIL
+    fetch(FEEDBACK_URL, { method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+      .catch(() => {});
+    // optimistic add, then re-sync from server shortly after
+    const cur = []; renderCommentsAppend(ul, payload);
+    note.textContent = 'Sent ✓ — saved and emailed.';
+    setTimeout(() => jsonpGet(payload.scene).then(items => renderComments(ul, items)), 1500);
+  } else {
+    const arr = loadLocal(payload.scene); arr.push(payload); saveLocal(payload.scene, arr);
+    renderComments(ul, arr);
+    // interim notification with no backend: open a pre-filled email
+    const subject = 'Shadow Clips feedback — ' + (clip.title || payload.scene);
+    const body = `Scene: ${clip.title || payload.scene}\nFrom: ${payload.name || 'Anonymous'}\n\n${payload.comment}`;
+    window.open('mailto:' + NOTIFY_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank');
+    note.textContent = 'Saved on this page — opening an email to notify Brian.';
+  }
+}
+function renderCommentsAppend(ul, c){
+  const none = ul.querySelector('.none'); if (none) none.remove();
+  const li = document.createElement('li');
+  li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
+                 `<div class="body">${esc(c.comment || '')}</div>`;
+  ul.appendChild(li);
+}
+
+/* ---- build gallery + sidebar ---- */
+function statusBadges(review){
+  if (!review) return '';
+  const out = [];
+  if (review.projectionist === 'approved') out.push('<span class="badge ok">Projectionist ✓</span>');
+  else if (review.projectionist) out.push(`<span class="badge pend">Projectionist: ${esc(review.projectionist)}</span>`);
+  if (review.director === 'approved') out.push('<span class="badge ok">Director ✓</span>');
+  else out.push('<span class="badge pend">Director ⏳ pending</span>');
+  return out.join('');
+}
+
+function loadClips(){
+  fetch('clips.json', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(clips => {
+      const g = document.getElementById('gallery');
+      const toc = document.getElementById('toc');
+      if (!Array.isArray(clips) || clips.length === 0) {
+        g.innerHTML = '<p class="empty">No clips published yet.</p>';
+        toc.innerHTML = '<li class="empty" style="padding:0 10px;color:#6b7280;font-size:.85rem">No chapters yet</li>';
+        return;
+      }
+      g.innerHTML = ''; toc.innerHTML = '';
+      const seen = {};
+      clips.forEach((c, i) => {
+        let id = slug(c.id || c.title) || ('clip-' + i);
+        if (seen[id]) id = id + '-' + i; seen[id] = true;
+        c._scene = c.id || id;
+
+        const card = document.createElement('div');
+        card.className = 'card'; card.id = id;
+        const poster = c.poster ? ` poster="${esc(c.poster)}"` : '';
+        card.innerHTML = `
+          <video controls preload="metadata"${poster}>
+            <source src="${esc(c.file)}" type="video/mp4">
+            Your browser can’t play this video. <a href="${esc(c.file)}">Download it</a>.
+          </video>
+          <div class="meta">
+            <div class="badges">
+              ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
+              ${statusBadges(c.review)}
+            </div>
+            <h2>${esc(c.title ?? c.file)}</h2>
+            ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
+            ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
+            <p class="dl"><a href="${esc(c.file)}" download>⬇ Download .mp4</a></p>
+            <section class="feedback">
+              <h3>Crew feedback</h3>
+              <ul class="comments"><li class="none">Loading…</li></ul>
+              <form class="fbform" autocomplete="off">
+                <input class="fb-name" type="text" placeholder="Your name (e.g. Dana, lighting)" maxlength="60">
+                <textarea class="fb-text" placeholder="Leave a note for this scene…" maxlength="2000" required></textarea>
+                <div class="fbrow">
+                  <button type="button" class="linkbtn fb-tc">⏱ Insert timecode</button>
+                  <button type="submit" class="btn">Send feedback</button>
+                  <span class="fbnote"></span>
+                </div>
+              </form>
+            </section>
+          </div>`;
+        g.appendChild(card);
+
+        // sidebar link
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#${id}" data-target="${id}">${esc(c.title ?? c.file)}` +
+          (c.page ? `<span class="pg">Page ${esc(c.page)}</span>` : '') + `</a>`;
+        toc.appendChild(li);
+
+        // wire feedback
+        const ul = card.querySelector('.comments');
+        const form = card.querySelector('.fbform');
+        const note = card.querySelector('.fbnote');
+        const video = card.querySelector('video');
+        jsonpGet(c._scene).then(items => renderComments(ul, items));
+        card.querySelector('.fb-tc').addEventListener('click', () => {
+          const ta = card.querySelector('.fb-text');
+          const tc = '[' + fmtTime(video.currentTime) + '] ';
+          ta.value = (ta.value ? ta.value.replace(/\s*$/, ' ') : '') + tc;
+          ta.focus();
+        });
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = card.querySelector('.fb-name').value.trim();
+          const text = card.querySelector('.fb-text').value.trim();
+          if (!text) return;
+          submitComment(c, { scene: c._scene, title: c.title, page: c.page, name, comment: text }, ul, note);
+          card.querySelector('.fb-text').value = '';
+        });
+      });
+
+      // scrollspy
+      const links = Object.fromEntries([...toc.querySelectorAll('a')].map(a => [a.dataset.target, a]));
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            for (const a of Object.values(links)) a.classList.remove('active');
+            const a = links[en.target.id]; if (a) a.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      g.querySelectorAll('.card').forEach(card => spy.observe(card));
+    })
+    .catch(err => {
+      document.getElementById('gallery').innerHTML =
+        '<p class="empty">Could not load clips.json — ' + esc(err) + '</p>';
+    });
+}
 </script>
 </body>
 </html>

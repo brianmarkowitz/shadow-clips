@@ -1,26 +1,32 @@
 [
   {
+    "id": "scene1",
     "title": "Scene 1 — Holmes entrance / exit",
     "page": 26,
     "file": "clips/IMG_2172_f6097-6554_silhouette.mp4",
     "poster": "clips/IMG_2172_f6097-6554_silhouette.jpg",
     "source": "IMG_2172.MOV (cut f6097–6554, 458 frames)",
-    "notes": "Holmes faces front, turns to profile, then walks frame-right and exits. Plain single-subject silhouette. Projectionist-approved — director review pending."
+    "notes": "Holmes faces front, turns to profile, then walks frame-right and exits. Plain single-subject silhouette.",
+    "review": { "projectionist": "approved", "director": "pending" }
   },
   {
+    "id": "scene4",
     "title": "Scene 4 — Séance: Moriarty flickers to the Ghost",
     "page": 76,
     "file": "clips/scene4_seance_flicker_swap.mp4",
     "poster": "clips/scene4_seance_flicker_swap.jpg",
     "source": "IMG_2170.MOV",
-    "notes": "Moriarty (man, coat, bowler) flickers out; the Ghost (woman, hooded cloak) flickers in. Flicker-swap effect straddles the transformation. Projectionist-approved — director review pending."
+    "notes": "Moriarty (man, coat, bowler) flickers out; the Ghost (woman, hooded cloak) flickers in. Flicker-swap effect straddles the transformation.",
+    "review": { "projectionist": "approved", "director": "pending" }
   },
   {
+    "id": "scene5",
     "title": "Scene 5 — The Falls: fight + falling deerstalker",
     "page": "97-98",
     "file": "clips/scene5_fight.mp4",
     "poster": "clips/scene5_fight.jpg",
     "source": "IMG_2167.MOV (whole file, 6834 frames, 114s)",
-    "notes": "Moriarty solo, Holmes enters, the grapple at the falls, the deerstalker falls and lands, Holmes downed, Moriarty exits, Holmes returns alone. Single union silhouette. Projectionist-approved — director review pending."
+    "notes": "Moriarty solo, Holmes enters, the grapple at the falls, the deerstalker falls and lands, Holmes downed, Moriarty exits, Holmes returns alone. Single union silhouette.",
+    "review": { "projectionist": "approved", "director": "pending" }
   }
 ]
