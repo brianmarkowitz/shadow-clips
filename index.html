@@ -105,40 +105,39 @@
   .meta .cues { color: #8a91a0; font-size: .82rem; margin: 6px 0 0; }
   .meta .cues b { color: #aab1bf; font-weight: 600; }
 
-  /* ---- placeholder (not-built scenes) ---- */
-  .card.placeholder { border-style: dashed; }
-  .ph-screen {
-    width: 100%; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--line);
-    background: repeating-linear-gradient(45deg, #15181d, #15181d 12px, #181c22 12px, #181c22 24px);
-    display: flex; align-items: center; justify-content: center;
-    color: #6b7280; font-size: .9rem; letter-spacing: .02em;
+  /* ---- not-built scenes: menu-only, muted, non-clickable ---- */
+  #toc .tocitem {
+    display: block; padding: 9px 10px; color: #5f6671; font-size: .9rem;
+    border-left: 3px solid transparent; cursor: default;
   }
-  .badge.todo { color: #cdd2db; background: rgba(154,160,173,.14); border: 1px solid #3a3f4a; }
-  #toc a.todo { color: #6b7280; }
-  #toc a.todo .pg { color: #565d68; }
+  #toc .tocitem .pg { display: block; font-size: .72rem; color: #4f555f; }
 
-  /* ---- feedback ---- */
+  /* ---- feedback (collapsed by default) ---- */
   .feedback { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
-  .feedback h3 { margin: 0 0 8px; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
   .comments { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .comments li { background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
   .comments .who { font-size: .8rem; font-weight: 600; }
   .comments .when { font-size: .72rem; color: #6b7280; font-weight: 400; }
   .comments .body { font-size: .88rem; margin-top: 2px; white-space: pre-wrap; word-break: break-word; }
-  .comments .none { color: #6b7280; font-size: .84rem; font-style: italic; }
-  .fbform { display: flex; flex-direction: column; gap: 8px; }
+  .addnote {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 8px; padding: 7px 12px; font-size: .85rem; cursor: pointer;
+  }
+  .addnote:hover { color: var(--text); border-color: #3a3f4a; }
+  .fbform { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
   .fbform input, .fbform textarea {
     background: #15181d; border: 1px solid var(--line); color: var(--text);
     border-radius: 8px; padding: 8px 10px; font: inherit; font-size: .88rem; width: 100%;
   }
-  .fbform textarea { resize: vertical; min-height: 60px; }
-  .fbrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .fbform textarea { resize: vertical; min-height: 56px; }
+  .fbrow { display: flex; gap: 8px; align-items: center; }
+  .fbrow .fb-name { width: auto; flex: 1 1 auto; }
   .linkbtn {
     background: none; border: 1px solid var(--line); color: var(--muted);
-    border-radius: 8px; padding: 6px 10px; font-size: .8rem; cursor: pointer;
+    border-radius: 8px; padding: 8px 10px; font-size: .9rem; cursor: pointer; flex: 0 0 auto;
   }
   .linkbtn:hover { color: var(--text); border-color: #3a3f4a; }
-  .fbnote { font-size: .78rem; color: #6b7280; min-height: 1em; }
+  .fbnote { font-size: .78rem; color: #6b7280; margin-left: 8px; }
 
   footer { color: #6b7280; font-size: .8rem; text-align: center; padding: 20px; }
   .empty { color: var(--muted); padding: 24px; }
@@ -151,6 +150,8 @@
     #toc a { border-left: none; border-bottom: 3px solid transparent; padding: 7px 10px; }
     #toc a.active { border-left: none; border-bottom-color: var(--accent); }
     #toc a .pg { display: none; }
+    #toc .tocitem { border-left: none; padding: 7px 10px; }
+    #toc .tocitem .pg { display: none; }
     main { grid-template-columns: 1fr; }
   }
 </style>
@@ -246,7 +247,8 @@ function jsonpGet(scene){
 
 function renderComments(ul, items){
   ul.innerHTML = '';
-  if (!items.length) { ul.innerHTML = '<li class="none">No notes yet — be the first.</li>'; return; }
+  if (!items || !items.length) { ul.hidden = true; return; }
+  ul.hidden = false;
   items.slice().sort((a,b) => (a.ts||0) - (b.ts||0)).forEach(c => {
     const li = document.createElement('li');
     li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
@@ -277,7 +279,7 @@ function submitComment(clip, payload, ul, note){
   }
 }
 function renderCommentsAppend(ul, c){
-  const none = ul.querySelector('.none'); if (none) none.remove();
+  ul.hidden = false;
   const li = document.createElement('li');
   li.innerHTML = `<div class="who">${esc(c.name || 'Anonymous')} <span class="when">${esc(fmtWhen(c.ts))}</span></div>` +
                  `<div class="body">${esc(c.comment || '')}</div>`;
@@ -317,31 +319,17 @@ function loadClips(){
           ? `<p class="cues"><b>Cue in:</b> “${esc(c.cue_in || '')}”${c.cue_out ? ` &nbsp;·&nbsp; <b>out:</b> “${esc(c.cue_out)}”` : ''}</p>`
           : '';
 
-        const card = document.createElement('div');
-        card.id = id;
-
-        // ---- placeholder card for a scene not rendered yet ----
+        // ---- not-built scene: show in the menu only, no card on the page ----
         if (c.placeholder) {
-          card.className = 'card placeholder';
-          card.innerHTML = `
-            <div class="ph-screen">Not rendered yet</div>
-            <div class="meta">
-              <div class="badges">
-                ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
-                <span class="badge todo">Not built yet</span>
-              </div>
-              <h2>${esc(c.title ?? '')}</h2>
-              ${cues}
-              ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
-            </div>`;
-          g.appendChild(card);
           const liP = document.createElement('li');
-          liP.innerHTML = `<a class="todo" href="#${id}" data-target="${id}">${esc(c.title ?? '')}` +
-            (c.page ? `<span class="pg">Page ${esc(c.page)} · not built</span>` : '') + `</a>`;
+          liP.innerHTML = `<span class="tocitem todo">${esc(c.title ?? '')}` +
+            (c.page ? `<span class="pg">Page ${esc(c.page)} · not built</span>` : '') + `</span>`;
           toc.appendChild(liP);
-          return; // no video / download / feedback for placeholders
+          return; // menu entry only
         }
 
+        const card = document.createElement('div');
+        card.id = id;
         card.className = 'card';
         const poster = c.poster ? ` poster="${esc(c.poster)}"` : '';
         card.innerHTML = `
@@ -360,15 +348,15 @@ function loadClips(){
             ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
             <p class="dl"><a href="${esc(c.file)}" download>⬇ Download .mp4</a></p>
             <section class="feedback">
-              <h3>Crew feedback</h3>
-              <ul class="comments"><li class="none">Loading…</li></ul>
-              <form class="fbform" autocomplete="off">
-                <input class="fb-name" type="text" placeholder="Your name (e.g. Dana, lighting)" maxlength="60">
-                <textarea class="fb-text" placeholder="Leave a note for this scene…" maxlength="2000" required></textarea>
+              <ul class="comments" hidden></ul>
+              <button type="button" class="addnote">＋ Leave a note</button>
+              <span class="fbnote"></span>
+              <form class="fbform" hidden autocomplete="off">
+                <textarea class="fb-text" placeholder="Your note…" maxlength="2000" required></textarea>
                 <div class="fbrow">
-                  <button type="button" class="linkbtn fb-tc">⏱ Insert timecode</button>
-                  <button type="submit" class="btn">Send feedback</button>
-                  <span class="fbnote"></span>
+                  <input class="fb-name" type="text" placeholder="Name (optional)" maxlength="60">
+                  <button type="button" class="linkbtn fb-tc" title="Insert current timecode">⏱</button>
+                  <button type="submit" class="btn">Send</button>
                 </div>
               </form>
             </section>
@@ -386,11 +374,15 @@ function loadClips(){
         const form = card.querySelector('.fbform');
         const note = card.querySelector('.fbnote');
         const video = card.querySelector('video');
+        const addBtn = card.querySelector('.addnote');
         jsonpGet(c._scene).then(items => renderComments(ul, items));
+        addBtn.addEventListener('click', () => {
+          form.hidden = false; addBtn.hidden = true; note.textContent = '';
+          card.querySelector('.fb-text').focus();
+        });
         card.querySelector('.fb-tc').addEventListener('click', () => {
           const ta = card.querySelector('.fb-text');
-          const tc = '[' + fmtTime(video.currentTime) + '] ';
-          ta.value = (ta.value ? ta.value.replace(/\s*$/, ' ') : '') + tc;
+          ta.value = (ta.value ? ta.value.replace(/\s*$/, ' ') : '') + '[' + fmtTime(video.currentTime) + '] ';
           ta.focus();
         });
         form.addEventListener('submit', (e) => {
@@ -400,6 +392,7 @@ function loadClips(){
           if (!text) return;
           submitComment(c, { scene: c._scene, title: c.title, page: c.page, name, comment: text }, ul, note);
           card.querySelector('.fb-text').value = '';
+          form.hidden = true; addBtn.hidden = false;
         });
       });
 
