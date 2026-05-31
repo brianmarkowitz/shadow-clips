@@ -31,13 +31,15 @@ projection (light everywhere except the figure reads as a cast shadow).
 
 ## Crew navigation & feedback
 
-- The left **Chapters** sidebar and per-clip **status badges** are generated
-  from `clips.json`. Each clip has a **Download .mp4** link.
-- Each clip has a **Crew feedback** box with an **Insert timecode** button
-  (grabs the video's current time so notes can point at an exact moment).
+- The left **Chapters** sidebar is generated from `clips.json`; built scenes
+  show as cards, not-yet-built scenes appear in the menu only. Each clip has a
+  **Download .mp4** link.
+- Each clip has a **＋ Comment** box with an **Insert timecode** button (grabs
+  the video's current time so notes can point at an exact moment).
 - The site is behind a soft **passcode gate** (client-side only — fine for an
   unlisted link, not real security).
-- By default comments are stored per-browser and submitting opens a pre-filled
-  email to the projectionist. To make comments **shared + auto-emailed**, deploy
-  the helper in [`feedback-backend/`](feedback-backend/) and set `FEEDBACK_URL`
-  in `index.html`.
+- **Comments currently save on the page only (per browser); no email is sent.**
+  Email send was turned off because the work network blocks third-party form
+  services. To turn it back on (works behind the firewall, no third party),
+  deploy the Google Apps Script in [`feedback-backend/`](feedback-backend/) and
+  POST to its `/exec` URL from `submitComment()` in `index.html`.

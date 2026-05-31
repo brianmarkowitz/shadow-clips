@@ -187,10 +187,11 @@
 <script>
 /* ============================ CONFIG ============================ */
 const NOTIFY_EMAIL = "bmarko@gmail.com";
-// Comments are SENT by code (no mailto) via FormSubmit.co — a POST emails
-// NOTIFY_EMAIL. No account/key needed; FormSubmit just requires a one-time
-// email confirmation. Comments also persist per-browser for on-page display.
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + NOTIFY_EMAIL;
+// Email send is OFF for now: the work network (Zscaler) blocks third-party form
+// services (FormSubmit/Web3Forms). Comments save per-browser for on-page display
+// only. To turn email back on later, deploy the Google Apps Script in
+// feedback-backend/ (Google passes the firewall) and POST to its /exec URL from
+// submitComment() — see that folder's README.
 // SHA-256 of the crew passcode (plaintext kept out of the source).
 const PASS_HASH = "c25eb61132a9729007e099f738d0a648daa8858d340a0fc35a0d2b09e5b93abb";
 /* =============================================================== */
@@ -244,29 +245,10 @@ function renderComments(ul, items){
 
 function submitComment(clip, payload, ul, note){
   payload.ts = Date.now();
-  // show + persist locally for on-page display
+  // save + show on this page (email send intentionally off — see CONFIG note)
   renderCommentsAppend(ul, payload);
   const arr = loadLocal(payload.scene); arr.push(payload); saveLocal(payload.scene, arr);
-  // real send by code (no mailto): POST emails NOTIFY_EMAIL via FormSubmit
-  note.textContent = 'Sending…';
-  fetch(FORM_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      _subject: 'Shadow Clips comment — ' + (clip.title || payload.scene),
-      name: payload.name || 'Anonymous',
-      scene: clip.title || payload.scene,
-      page: String(payload.page || ''),
-      message: payload.comment,
-      _captcha: 'false',
-      _template: 'table'
-    })
-  })
-    .then(r => r.json())
-    .then(d => { note.textContent = (d && (d.success === true || d.success === 'true'))
-      ? 'Sent ✓ — emailed to Brian.'
-      : 'Saved here. Email pending — Brian may need to confirm the inbox once.'; })
-    .catch(() => { note.textContent = 'Saved here, but the email didn’t send — check your connection and retry.'; });
+  note.textContent = 'Saved on this page.';
 }
 function renderCommentsAppend(ul, c){
   ul.hidden = false;
