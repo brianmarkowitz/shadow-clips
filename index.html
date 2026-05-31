@@ -287,16 +287,6 @@ function renderCommentsAppend(ul, c){
 }
 
 /* ---- build gallery + sidebar ---- */
-function statusBadges(review){
-  if (!review) return '';
-  const out = [];
-  if (review.projectionist === 'approved') out.push('<span class="badge ok">Projectionist ✓</span>');
-  else if (review.projectionist) out.push(`<span class="badge pend">Projectionist: ${esc(review.projectionist)}</span>`);
-  if (review.director === 'approved') out.push('<span class="badge ok">Director ✓</span>');
-  else out.push('<span class="badge pend">Director ⏳ pending</span>');
-  return out.join('');
-}
-
 function loadClips(){
   fetch('clips.json', { cache: 'no-store' })
     .then(r => r.json())
@@ -340,7 +330,6 @@ function loadClips(){
           <div class="meta">
             <div class="badges">
               ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
-              ${statusBadges(c.review)}
             </div>
             <h2>${esc(c.title ?? c.file)}</h2>
             ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
@@ -349,10 +338,10 @@ function loadClips(){
             <p class="dl"><a href="${esc(c.file)}" download>⬇ Download .mp4</a></p>
             <section class="feedback">
               <ul class="comments" hidden></ul>
-              <button type="button" class="addnote">＋ Leave a note</button>
+              <button type="button" class="addnote">＋ Comment</button>
               <span class="fbnote"></span>
               <form class="fbform" hidden autocomplete="off">
-                <textarea class="fb-text" placeholder="Your note…" maxlength="2000" required></textarea>
+                <textarea class="fb-text" placeholder="Your comment…" maxlength="2000" required></textarea>
                 <div class="fbrow">
                   <input class="fb-name" type="text" placeholder="Name (optional)" maxlength="60">
                   <button type="button" class="linkbtn fb-tc" title="Insert current timecode">⏱</button>
