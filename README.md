@@ -25,8 +25,8 @@ projection (light everywhere except the figure reads as a cast shadow).
    }
    ```
    - `id` keys the clip's feedback thread — keep it stable and unique.
-   - `review` drives the status badges (`approved` → green ✓, anything else →
-     amber pending). Set `"director": "approved"` once the director signs off.
+   - `review` is optional metadata for tracking sign-off; it is **not** shown on
+     the page right now (status badges were removed — only a Page badge renders).
 3. Commit and push — GitHub Pages serves the update automatically.
 
 ## Crew navigation & feedback
@@ -36,10 +36,10 @@ projection (light everywhere except the figure reads as a cast shadow).
   **Download .mp4** link.
 - Each clip has a **＋ Comment** box with an **Insert timecode** button (grabs
   the video's current time so notes can point at an exact moment).
-- The site is behind a soft **passcode gate** (client-side only — fine for an
-  unlisted link, not real security).
-- **Comments currently save on the page only (per browser); no email is sent.**
-  Email send was turned off because the work network blocks third-party form
-  services. To turn it back on (works behind the firewall, no third party),
-  deploy the Google Apps Script in [`feedback-backend/`](feedback-backend/) and
-  POST to its `/exec` URL from `submitComment()` in `index.html`.
+- The site is **open** — no passcode. It's an unlisted link (`noindex`); share
+  the URL only with crew.
+- **Comments save on the page only (per browser); no email is sent.** Email send
+  was turned off because the work network blocks third-party form services. To
+  turn it back on (works behind the firewall, no third party), deploy the Google
+  Apps Script in [`feedback-backend/`](feedback-backend/) and POST to its `/exec`
+  URL from `submitComment()` in `index.html`.

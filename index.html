@@ -30,27 +30,11 @@
     line-height: 1.5;
   }
 
-  /* ---- passcode gate ---- */
-  #gate {
-    position: fixed; inset: 0; z-index: 100;
-    background: #101216;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 14px; padding: 24px; text-align: center;
-  }
-  #gate h1 { margin: 0; font-size: 1.3rem; }
-  #gate p { margin: 0; color: var(--muted); font-size: .9rem; }
-  #gate form { display: flex; gap: 8px; margin-top: 6px; }
-  #gate input {
-    background: var(--panel); border: 1px solid var(--line); color: var(--text);
-    border-radius: 8px; padding: 10px 12px; font-size: 1rem; width: 220px;
-  }
   .btn {
     background: var(--accent); color: #11141a; border: none; border-radius: 8px;
     padding: 10px 16px; font-size: .95rem; font-weight: 600; cursor: pointer;
   }
   .btn:hover { filter: brightness(1.06); }
-  #gate .err { color: #e06b6b; font-size: .85rem; min-height: 1em; }
-  body.locked { overflow: hidden; }
 
   /* layout: sticky sidebar + scrolling content */
   .layout { display: flex; align-items: flex-start; }
@@ -156,20 +140,9 @@
   }
 </style>
 </head>
-<body class="locked">
+<body>
 
-<!-- ======= passcode gate (soft, client-side only) ======= -->
-<div id="gate">
-  <h1>Shadow Clips</h1>
-  <p>Enter the crew passcode to view.</p>
-  <form id="gateForm">
-    <input id="gateInput" type="password" autocomplete="current-password" placeholder="Passcode" autofocus>
-    <button class="btn" type="submit">Enter</button>
-  </form>
-  <div class="err" id="gateErr"></div>
-</div>
-
-<div class="layout" hidden id="app">
+<div class="layout" id="app">
   <nav id="sidebar" aria-label="Scene navigation">
     <p class="brand">Chapters</p>
     <ul id="toc"><li class="empty">Loading…</li></ul>
@@ -192,39 +165,12 @@ const NOTIFY_EMAIL = "bmarko@gmail.com";
 // only. To turn email back on later, deploy the Google Apps Script in
 // feedback-backend/ (Google passes the firewall) and POST to its /exec URL from
 // submitComment() — see that folder's README.
-// SHA-256 of the crew passcode (plaintext kept out of the source).
-const PASS_HASH = "c25eb61132a9729007e099f738d0a648daa8858d340a0fc35a0d2b09e5b93abb";
 /* =============================================================== */
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const fmtTime = sec => { sec = Math.max(0, Math.floor(sec || 0)); const m = Math.floor(sec/60); const s = sec%60; return m + ':' + String(s).padStart(2,'0'); };
 const fmtWhen = ts => { try { return new Date(ts).toLocaleString(); } catch { return ''; } };
-
-async function sha256hex(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
-}
-
-/* ---- passcode gate ---- */
-const gate = document.getElementById('gate');
-function unlock() {
-  sessionStorage.setItem('sc_unlocked', '1');
-  gate.hidden = true;
-  document.body.classList.remove('locked');
-  const app = document.getElementById('app');
-  app.hidden = false;
-  if (!app.dataset.loaded) { app.dataset.loaded = '1'; loadClips(); }
-}
-if (sessionStorage.getItem('sc_unlocked') === '1') { unlock(); }
-document.getElementById('gateForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const val = document.getElementById('gateInput').value;
-  const err = document.getElementById('gateErr');
-  err.textContent = '';
-  if (await sha256hex(val) === PASS_HASH) { unlock(); }
-  else { err.textContent = 'Incorrect passcode.'; document.getElementById('gateInput').select(); }
-});
 
 /* ---- on-page comment store (per-browser display; email send is separate) ---- */
 function localKey(scene){ return 'sc_fb:' + scene; }
@@ -374,6 +320,8 @@ function loadClips(){
         '<p class="empty">Could not load clips.json — ' + esc(err) + '</p>';
     });
 }
+
+loadClips();
 </script>
 </body>
 </html>
