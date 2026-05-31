@@ -186,12 +186,11 @@
 
 <script>
 /* ============================ CONFIG ============================ */
-// Set FEEDBACK_URL to a deployed Google Apps Script /exec URL to make crew
-// comments SHARED (visible to everyone) and EMAILED to NOTIFY_EMAIL.
-// While it is "", comments are stored in this browser and submitting opens a
-// pre-filled email to NOTIFY_EMAIL so nothing is lost.
-const FEEDBACK_URL = "";
 const NOTIFY_EMAIL = "bmarko@gmail.com";
+// Comments are SENT by code (no mailto) via FormSubmit.co — a POST emails
+// NOTIFY_EMAIL. No account/key needed; FormSubmit just requires a one-time
+// email confirmation. Comments also persist per-browser for on-page display.
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + NOTIFY_EMAIL;
 // SHA-256 of the crew passcode (plaintext kept out of the source).
 const PASS_HASH = "c25eb61132a9729007e099f738d0a648daa8858d340a0fc35a0d2b09e5b93abb";
 /* =============================================================== */
@@ -226,24 +225,10 @@ document.getElementById('gateForm').addEventListener('submit', async (e) => {
   else { err.textContent = 'Incorrect passcode.'; document.getElementById('gateInput').select(); }
 });
 
-/* ---- comments backend (graceful fallback) ---- */
+/* ---- on-page comment store (per-browser display; email send is separate) ---- */
 function localKey(scene){ return 'sc_fb:' + scene; }
 function loadLocal(scene){ try { return JSON.parse(localStorage.getItem(localKey(scene)) || '[]'); } catch { return []; } }
 function saveLocal(scene, arr){ localStorage.setItem(localKey(scene), JSON.stringify(arr)); }
-
-// Apps Script can't send CORS headers for fetch reads, so GET via JSONP.
-function jsonpGet(scene){
-  return new Promise(resolve => {
-    if (!FEEDBACK_URL) return resolve(loadLocal(scene));
-    const cb = 'sc_cb_' + Math.random().toString(36).slice(2);
-    const s = document.createElement('script');
-    const done = (d) => { try { delete window[cb]; } catch {} s.remove(); resolve(Array.isArray(d) ? d : (d && d.comments) || []); };
-    window[cb] = done;
-    s.onerror = () => done([]);
-    s.src = FEEDBACK_URL + (FEEDBACK_URL.includes('?') ? '&' : '?') + 'scene=' + encodeURIComponent(scene) + '&callback=' + cb;
-    document.body.appendChild(s);
-  });
-}
 
 function renderComments(ul, items){
   ul.innerHTML = '';
@@ -259,24 +244,29 @@ function renderComments(ul, items){
 
 function submitComment(clip, payload, ul, note){
   payload.ts = Date.now();
-  if (FEEDBACK_URL) {
-    // fire-and-forget POST (no-cors); the script stores it + emails NOTIFY_EMAIL
-    fetch(FEEDBACK_URL, { method: 'POST', mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
-      .catch(() => {});
-    // optimistic add, then re-sync from server shortly after
-    const cur = []; renderCommentsAppend(ul, payload);
-    note.textContent = 'Sent ✓ — saved and emailed.';
-    setTimeout(() => jsonpGet(payload.scene).then(items => renderComments(ul, items)), 1500);
-  } else {
-    const arr = loadLocal(payload.scene); arr.push(payload); saveLocal(payload.scene, arr);
-    renderComments(ul, arr);
-    // interim notification with no backend: open a pre-filled email
-    const subject = 'Shadow Clips feedback — ' + (clip.title || payload.scene);
-    const body = `Scene: ${clip.title || payload.scene}\nFrom: ${payload.name || 'Anonymous'}\n\n${payload.comment}`;
-    window.open('mailto:' + NOTIFY_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank');
-    note.textContent = 'Saved on this page — opening an email to notify Brian.';
-  }
+  // show + persist locally for on-page display
+  renderCommentsAppend(ul, payload);
+  const arr = loadLocal(payload.scene); arr.push(payload); saveLocal(payload.scene, arr);
+  // real send by code (no mailto): POST emails NOTIFY_EMAIL via FormSubmit
+  note.textContent = 'Sending…';
+  fetch(FORM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      _subject: 'Shadow Clips comment — ' + (clip.title || payload.scene),
+      name: payload.name || 'Anonymous',
+      scene: clip.title || payload.scene,
+      page: String(payload.page || ''),
+      message: payload.comment,
+      _captcha: 'false',
+      _template: 'table'
+    })
+  })
+    .then(r => r.json())
+    .then(d => { note.textContent = (d && (d.success === true || d.success === 'true'))
+      ? 'Sent ✓ — emailed to Brian.'
+      : 'Saved here. Email pending — Brian may need to confirm the inbox once.'; })
+    .catch(() => { note.textContent = 'Saved here, but the email didn’t send — check your connection and retry.'; });
 }
 function renderCommentsAppend(ul, c){
   ul.hidden = false;
@@ -364,7 +354,7 @@ function loadClips(){
         const note = card.querySelector('.fbnote');
         const video = card.querySelector('video');
         const addBtn = card.querySelector('.addnote');
-        jsonpGet(c._scene).then(items => renderComments(ul, items));
+        renderComments(ul, loadLocal(c._scene));
         addBtn.addEventListener('click', () => {
           form.hidden = false; addBtn.hidden = true; note.textContent = '';
           card.querySelector('.fb-text').focus();
