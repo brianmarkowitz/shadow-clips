@@ -10,6 +10,24 @@
     "review": { "projectionist": "approved", "director": "pending" }
   },
   {
+    "id": "scene2",
+    "title": "Scene 2 — Moriarty menacing (I)",
+    "page": "37-38",
+    "placeholder": true,
+    "cue_in": "I pushed you…",
+    "cue_out": "Beyond your control.",
+    "notes": "Moriarty menacing. Single subject. Source not yet assigned."
+  },
+  {
+    "id": "scene3",
+    "title": "Scene 3 — Moriarty menacing (II)",
+    "page": "63-64",
+    "placeholder": true,
+    "cue_in": "Moriarty",
+    "cue_out": "I have work to do",
+    "notes": "Moriarty menacing. Single subject. Source not yet assigned."
+  },
+  {
     "id": "scene4",
     "title": "Scene 4 — Séance: Moriarty flickers to the Ghost",
     "page": 76,
@@ -28,5 +46,14 @@
     "source": "IMG_2167.MOV (whole file, 6834 frames, 114s)",
     "notes": "Moriarty solo, Holmes enters, the grapple at the falls, the deerstalker falls and lands, Holmes downed, Moriarty exits, Holmes returns alone. Single union silhouette.",
     "review": { "projectionist": "approved", "director": "pending" }
+  },
+  {
+    "id": "scene6",
+    "title": "Scene 6 — Moriarty reaches for Holmes",
+    "page": 127,
+    "placeholder": true,
+    "cue_in": "I'll be back",
+    "cue_out": "",
+    "notes": "Moriarty reaches for Holmes. Single subject. Source not yet assigned."
   }
 ]

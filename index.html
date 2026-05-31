@@ -102,6 +102,20 @@
   .meta .dl { margin: 10px 0 0; }
   .meta .dl a { color: var(--muted); font-size: .82rem; text-decoration: none; }
   .meta .dl a:hover { color: var(--text); text-decoration: underline; }
+  .meta .cues { color: #8a91a0; font-size: .82rem; margin: 6px 0 0; }
+  .meta .cues b { color: #aab1bf; font-weight: 600; }
+
+  /* ---- placeholder (not-built scenes) ---- */
+  .card.placeholder { border-style: dashed; }
+  .ph-screen {
+    width: 100%; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--line);
+    background: repeating-linear-gradient(45deg, #15181d, #15181d 12px, #181c22 12px, #181c22 24px);
+    display: flex; align-items: center; justify-content: center;
+    color: #6b7280; font-size: .9rem; letter-spacing: .02em;
+  }
+  .badge.todo { color: #cdd2db; background: rgba(154,160,173,.14); border: 1px solid #3a3f4a; }
+  #toc a.todo { color: #6b7280; }
+  #toc a.todo .pg { color: #565d68; }
 
   /* ---- feedback ---- */
   .feedback { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
@@ -299,8 +313,36 @@ function loadClips(){
         if (seen[id]) id = id + '-' + i; seen[id] = true;
         c._scene = c.id || id;
 
+        const cues = (c.cue_in || c.cue_out)
+          ? `<p class="cues"><b>Cue in:</b> “${esc(c.cue_in || '')}”${c.cue_out ? ` &nbsp;·&nbsp; <b>out:</b> “${esc(c.cue_out)}”` : ''}</p>`
+          : '';
+
         const card = document.createElement('div');
-        card.className = 'card'; card.id = id;
+        card.id = id;
+
+        // ---- placeholder card for a scene not rendered yet ----
+        if (c.placeholder) {
+          card.className = 'card placeholder';
+          card.innerHTML = `
+            <div class="ph-screen">Not rendered yet</div>
+            <div class="meta">
+              <div class="badges">
+                ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
+                <span class="badge todo">Not built yet</span>
+              </div>
+              <h2>${esc(c.title ?? '')}</h2>
+              ${cues}
+              ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
+            </div>`;
+          g.appendChild(card);
+          const liP = document.createElement('li');
+          liP.innerHTML = `<a class="todo" href="#${id}" data-target="${id}">${esc(c.title ?? '')}` +
+            (c.page ? `<span class="pg">Page ${esc(c.page)} · not built</span>` : '') + `</a>`;
+          toc.appendChild(liP);
+          return; // no video / download / feedback for placeholders
+        }
+
+        card.className = 'card';
         const poster = c.poster ? ` poster="${esc(c.poster)}"` : '';
         card.innerHTML = `
           <video controls preload="metadata"${poster}>
@@ -314,6 +356,7 @@ function loadClips(){
             </div>
             <h2>${esc(c.title ?? c.file)}</h2>
             ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
+            ${cues}
             ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
             <p class="dl"><a href="${esc(c.file)}" download>⬇ Download .mp4</a></p>
             <section class="feedback">
