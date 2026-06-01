@@ -13,10 +13,13 @@
     "id": "scene2",
     "title": "Scene 2 — Moriarty menacing (I)",
     "page": "37-38",
-    "placeholder": true,
+    "file": "clips/scene2_moriarty.mp4",
+    "poster": "clips/scene2_moriarty.jpg",
+    "source": "IMG_2159.MOV (cut f914–1820, 907 frames)",
     "cue_in": "I pushed you…",
     "cue_out": "Beyond your control.",
-    "notes": "Moriarty menacing. Single subject. Source not yet assigned."
+    "notes": "Moriarty stands menacing at the table, then walks frame-left and exits. Plain single-subject silhouette.",
+    "review": { "projectionist": "approved", "director": "pending" }
   },
   {
     "id": "scene3",
