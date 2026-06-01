@@ -25,10 +25,13 @@
     "id": "scene3",
     "title": "Scene 3 — Moriarty menacing (II)",
     "page": "63-64",
-    "placeholder": true,
+    "file": "clips/IMG_2163_f1975-3414_silhouette.mp4",
+    "poster": "clips/IMG_2163_f1975-3414_silhouette.jpg",
+    "source": "IMG_2163.MOV (cut f1975–3414, 1441 frames)",
     "cue_in": "Moriarty",
     "cue_out": "I have work to do",
-    "notes": "Moriarty menacing. Single subject. Source not yet assigned."
+    "notes": "Moriarty enters frame-left, walks to centre, holds centre menacing/gesturing, then walks frame-right. Plain single-subject silhouette. Walk-in/out leg-gap timing de-popped so the legs separate on the same frame as the source instead of snapping open a couple frames late.",
+    "review": { "projectionist": "approved", "director": "pending" }
   },
   {
     "id": "scene4",
@@ -61,5 +64,55 @@
     "cue_out": "",
     "notes": "Moriarty stands center and reaches his right arm toward off-frame Holmes. Plain single-subject silhouette.",
     "review": { "projectionist": "approved", "director": "pending" }
+  },
+  {
+    "section": "Additional Moriarty footage",
+    "id": "additional-moriarty",
+    "note": "Filmed before we did it with a scene read. Raw footage — not yet turned into shadows. Some are pretty good and we may want to use them, so they're posted here as source that can be processed into silhouettes if needed. All cut from IMG_2158.MOV."
+  },
+  {
+    "id": "addl-clapping",
+    "title": "Clapping",
+    "raw": true,
+    "file": "clips/clapping_IMG_2158_f8288-8794.mp4",
+    "poster": "clips/clapping_IMG_2158_f8288-8794.jpg",
+    "source": "IMG_2158.MOV (cut f8288–8794, 507 frames)",
+    "notes": "Raw footage (color, no shadow processing yet)."
+  },
+  {
+    "id": "addl-book",
+    "title": "Book",
+    "raw": true,
+    "file": "clips/book_IMG_2158_f12096-12598.mp4",
+    "poster": "clips/book_IMG_2158_f12096-12598.jpg",
+    "source": "IMG_2158.MOV (cut f12096–12598, 503 frames)",
+    "notes": "Raw footage (color, no shadow processing yet)."
+  },
+  {
+    "id": "addl-hand-to-face",
+    "title": "Hand to face",
+    "raw": true,
+    "file": "clips/hand_to_face_IMG_2158_f14980-15360.mp4",
+    "poster": "clips/hand_to_face_IMG_2158_f14980-15360.jpg",
+    "source": "IMG_2158.MOV (cut f14980–15360, 381 frames)",
+    "notes": "Raw footage (color, no shadow processing yet)."
+  },
+  {
+    "id": "addl-hand-to-face-take2",
+    "title": "Hand to face (take 2)",
+    "raw": true,
+    "file": "clips/hand_to_face_take2_IMG_2158_f15723-16209.mp4",
+    "poster": "clips/hand_to_face_take2_IMG_2158_f15723-16209.jpg",
+    "source": "IMG_2158.MOV (cut f15723–16209, 487 frames)",
+    "notes": "Raw footage (color, no shadow processing yet)."
+  },
+  {
+    "id": "addl-arms-raised",
+    "title": "Arms raised",
+    "raw": true,
+    "file": "clips/arms_raised_IMG_2158_f17570-17891.mp4",
+    "poster": "clips/arms_raised_IMG_2158_f17570-17891.jpg",
+    "source": "IMG_2158.MOV (cut f17570–17891, 322 frames)",
+    "notes": "Raw footage (color, no shadow processing yet)."
   }
 ]

@@ -159,6 +159,14 @@
   footer { color: #6b7280; font-size: .8rem; text-align: center; padding: 20px; }
   .empty { color: var(--muted); padding: 24px; }
 
+  /* ---- full-width section divider (e.g. additional footage) ---- */
+  .section-head { grid-column: 1 / -1; margin: 12px 0 -6px; padding: 16px 4px 0; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+  .section-head h2 { margin: 0 0 5px; font-size: 1.18rem; font-weight: 650; }
+  .section-head p { margin: 0; color: var(--muted); font-size: .9rem; max-width: 780px; }
+  .badge.raw { color: #e7ecff; background: rgba(120,140,220,.18); border: 1px solid #5b6bb0; }
+  #toc .toc-section { margin-top: 16px; color: var(--accent); font-weight: 650; font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; border-left-color: transparent; }
+  #toc .toc-section:hover { color: #fff; }
+
   @media (max-width: 760px) {
     .layout { display: block; }
     #sidebar { width: auto; position: static; height: auto; border-right: none;
@@ -249,6 +257,19 @@ function loadClips(){
         if (seen[id]) id = id + '-' + i; seen[id] = true;
         c._scene = c.id || id;
 
+        // ---- full-width section divider with a note (no video) ----
+        if (c.section) {
+          const head = document.createElement('div');
+          head.id = id;
+          head.className = 'section-head';
+          head.innerHTML = `<h2>${esc(c.section)}</h2>` + (c.note ? `<p>${esc(c.note)}</p>` : '');
+          g.appendChild(head);
+          const liS = document.createElement('li');
+          liS.innerHTML = `<a href="#${id}" data-target="${id}" class="toc-section">${esc(c.section)}</a>`;
+          toc.appendChild(liS);
+          return;
+        }
+
         const cues = (c.cue_in || c.cue_out)
           ? `<p class="cues"><b>Cue in:</b> “${esc(c.cue_in || '')}”${c.cue_out ? ` &nbsp;·&nbsp; <b>out:</b> “${esc(c.cue_out)}”` : ''}</p>`
           : '';
@@ -273,6 +294,7 @@ function loadClips(){
           </video>
           <div class="meta">
             <div class="badges">
+              ${c.raw ? `<span class="badge raw">Raw footage</span>` : ''}
               ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
             </div>
             <h2>${esc(c.title ?? c.file)}</h2>
