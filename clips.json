@@ -54,9 +54,12 @@
     "id": "scene6",
     "title": "Scene 6 — Moriarty reaches for Holmes",
     "page": 127,
-    "placeholder": true,
+    "file": "clips/scene6_moriarty.mp4",
+    "poster": "clips/scene6_moriarty.jpg",
+    "source": "IMG_2168.MOV (cut f2500–2750, 251 frames)",
     "cue_in": "I'll be back",
     "cue_out": "",
-    "notes": "Moriarty reaches for Holmes. Single subject. Source not yet assigned."
+    "notes": "Moriarty stands center and reaches his right arm toward off-frame Holmes. Plain single-subject silhouette.",
+    "review": { "projectionist": "approved", "director": "pending" }
   }
 ]
