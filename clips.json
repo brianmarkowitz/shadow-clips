@@ -68,7 +68,7 @@
   {
     "section": "Additional Moriarty footage",
     "id": "additional-moriarty",
-    "note": "Filmed before we did it with a scene read. Raw footage — not yet turned into shadows. Some are pretty good and we may want to use them, so they're posted here as source that can be processed into silhouettes if needed. All cut from IMG_2158.MOV."
+    "note": "Filmed before we did it with a scene read. Some are pretty good and we may want to use them. Each is shown twice: the raw footage (for the performance) and its silhouette version. All cut from IMG_2158.MOV. Silhouette versions are pending projectionist review."
   },
   {
     "id": "addl-clapping",
@@ -77,7 +77,16 @@
     "file": "clips/clapping_IMG_2158_f8288-8794.mp4",
     "poster": "clips/clapping_IMG_2158_f8288-8794.jpg",
     "source": "IMG_2158.MOV (cut f8288–8794, 507 frames)",
-    "notes": "Raw footage (color, no shadow processing yet)."
+    "notes": "Raw footage (color)."
+  },
+  {
+    "id": "addl-clapping-sil",
+    "title": "Clapping — silhouette",
+    "file": "clips/clapping_IMG_2158_f8288-8794_silhouette.mp4",
+    "poster": "clips/clapping_IMG_2158_f8288-8794_silhouette.jpg",
+    "source": "IMG_2158.MOV (cut f8288–8794, 507 frames)",
+    "notes": "Silhouette of the raw clip above. He walks frame-right to frame-left and exits; legs read as an open/merged shadow through the stride.",
+    "review": { "projectionist": "pending", "director": "pending" }
   },
   {
     "id": "addl-book",
@@ -86,7 +95,16 @@
     "file": "clips/book_IMG_2158_f12096-12598.mp4",
     "poster": "clips/book_IMG_2158_f12096-12598.jpg",
     "source": "IMG_2158.MOV (cut f12096–12598, 503 frames)",
-    "notes": "Raw footage (color, no shadow processing yet)."
+    "notes": "Raw footage (color)."
+  },
+  {
+    "id": "addl-book-sil",
+    "title": "Book — silhouette",
+    "file": "clips/book_IMG_2158_f12096-12598_silhouette.mp4",
+    "poster": "clips/book_IMG_2158_f12096-12598_silhouette.jpg",
+    "source": "IMG_2158.MOV (cut f12096–12598, 503 frames)",
+    "notes": "Silhouette of the raw clip above. The held book reads in the silhouette.",
+    "review": { "projectionist": "pending", "director": "pending" }
   },
   {
     "id": "addl-hand-to-face",
@@ -95,7 +113,16 @@
     "file": "clips/hand_to_face_IMG_2158_f14980-15360.mp4",
     "poster": "clips/hand_to_face_IMG_2158_f14980-15360.jpg",
     "source": "IMG_2158.MOV (cut f14980–15360, 381 frames)",
-    "notes": "Raw footage (color, no shadow processing yet)."
+    "notes": "Raw footage (color)."
+  },
+  {
+    "id": "addl-hand-to-face-sil",
+    "title": "Hand to face — silhouette",
+    "file": "clips/hand_to_face_IMG_2158_f14980-15360_silhouette.mp4",
+    "poster": "clips/hand_to_face_IMG_2158_f14980-15360_silhouette.jpg",
+    "source": "IMG_2158.MOV (cut f14980–15360, 381 frames)",
+    "notes": "Silhouette of the raw clip above.",
+    "review": { "projectionist": "pending", "director": "pending" }
   },
   {
     "id": "addl-hand-to-face-take2",
@@ -104,7 +131,16 @@
     "file": "clips/hand_to_face_take2_IMG_2158_f15723-16209.mp4",
     "poster": "clips/hand_to_face_take2_IMG_2158_f15723-16209.jpg",
     "source": "IMG_2158.MOV (cut f15723–16209, 487 frames)",
-    "notes": "Raw footage (color, no shadow processing yet)."
+    "notes": "Raw footage (color)."
+  },
+  {
+    "id": "addl-hand-to-face-take2-sil",
+    "title": "Hand to face (take 2) — silhouette",
+    "file": "clips/hand_to_face_take2_IMG_2158_f15723-16209_silhouette.mp4",
+    "poster": "clips/hand_to_face_take2_IMG_2158_f15723-16209_silhouette.jpg",
+    "source": "IMG_2158.MOV (cut f15723–16209, 487 frames)",
+    "notes": "Silhouette of the raw clip above.",
+    "review": { "projectionist": "pending", "director": "pending" }
   },
   {
     "id": "addl-arms-raised",
@@ -113,6 +149,15 @@
     "file": "clips/arms_raised_IMG_2158_f17570-17891.mp4",
     "poster": "clips/arms_raised_IMG_2158_f17570-17891.jpg",
     "source": "IMG_2158.MOV (cut f17570–17891, 322 frames)",
-    "notes": "Raw footage (color, no shadow processing yet)."
+    "notes": "Raw footage (color)."
+  },
+  {
+    "id": "addl-arms-raised-sil",
+    "title": "Arms raised — silhouette",
+    "file": "clips/arms_raised_IMG_2158_f17570-17891_silhouette.mp4",
+    "poster": "clips/arms_raised_IMG_2158_f17570-17891_silhouette.jpg",
+    "source": "IMG_2158.MOV (cut f17570–17891, 322 frames)",
+    "notes": "Silhouette of the raw clip above. The wide arm-spread reads cleanly.",
+    "review": { "projectionist": "pending", "director": "pending" }
   }
 ]
