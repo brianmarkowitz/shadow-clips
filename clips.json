@@ -1,5 +1,90 @@
 [
   {
+    "section": "Title card",
+    "id": "title-card",
+    "note": "Opening title card for the show — candidate designs to pick from. Same artwork and lettering (the title hand-writes on over a watercolor Holmes silhouette with drifting mist); the variants differ in resolution, length, and write-on/mist pacing. Note: a few are the same render — V1, V3 and V6 are identical, and V2 and V5 are identical — so there are 6 distinct looks among the ten. Watch, then pick one (or ask for a tweak)."
+  },
+  {
+    "id": "title-card-v1",
+    "title": "Title card — V1",
+    "file": "clips/title_card_1.mp4",
+    "poster": "clips/title_card_1.jpg",
+    "source": "Title-card candidate render (1920×1080, 10s)",
+    "notes": "The lettering writes on, then holds with drifting mist. Same render as V3 and V6."
+  },
+  {
+    "id": "title-card-v2",
+    "title": "Title card — V2",
+    "file": "clips/title_card_2.mp4",
+    "poster": "clips/title_card_2.jpg",
+    "source": "Title-card candidate render (1280×720, 10s)",
+    "notes": "Same look as V1 at 720p. Same render as V5."
+  },
+  {
+    "id": "title-card-v3",
+    "title": "Title card — V3",
+    "file": "clips/title_card_3.mp4",
+    "poster": "clips/title_card_3.jpg",
+    "source": "Title-card candidate render (1920×1080, 10s)",
+    "notes": "Identical render to V1 (kept for completeness)."
+  },
+  {
+    "id": "title-card-v4",
+    "title": "Title card — V4",
+    "file": "clips/title_card_4.mp4",
+    "poster": "clips/title_card_4.jpg",
+    "source": "Title-card candidate render (1280×720, 10s)",
+    "notes": "720p variant; write-on completes early and holds."
+  },
+  {
+    "id": "title-card-v5",
+    "title": "Title card — V5",
+    "file": "clips/title_card_5.mp4",
+    "poster": "clips/title_card_5.jpg",
+    "source": "Title-card candidate render (1280×720, 10s)",
+    "notes": "Identical render to V2 (kept for completeness)."
+  },
+  {
+    "id": "title-card-v6",
+    "title": "Title card — V6",
+    "file": "clips/title_card_6.mp4",
+    "poster": "clips/title_card_6.jpg",
+    "source": "Title-card candidate render (1920×1080, 10s)",
+    "notes": "Identical render to V1 (kept for completeness)."
+  },
+  {
+    "id": "title-card-v7",
+    "title": "Title card — V7",
+    "file": "clips/title_card_7.mp4",
+    "poster": "clips/title_card_7.jpg",
+    "source": "Title-card candidate render (1916×1080, 10s)",
+    "notes": "Slower write-on — the lettering finishes near the end of the clip rather than holding."
+  },
+  {
+    "id": "title-card-v8",
+    "title": "Title card — V8",
+    "file": "clips/title_card_8.mp4",
+    "poster": "clips/title_card_8.jpg",
+    "source": "Title-card candidate render (1916×1080, 10s)",
+    "notes": "Slower write-on variant; lettering completes near the end."
+  },
+  {
+    "id": "title-card-v9",
+    "title": "Title card — V9",
+    "file": "clips/title_card_9.mp4",
+    "poster": "clips/title_card_9.jpg",
+    "source": "Title-card candidate render (1280×720, 10s)",
+    "notes": "720p variant."
+  },
+  {
+    "id": "title-card-v10",
+    "title": "Title card — V10",
+    "file": "clips/title_card_10.mp4",
+    "poster": "clips/title_card_10.jpg",
+    "source": "Title-card candidate render (1280×720, 5s)",
+    "notes": "Shortest cut — a faster write-on at half the length."
+  },
+  {
     "id": "scene1",
     "title": "Scene 1 — Holmes entrance / exit",
     "page": 26,
@@ -199,11 +284,11 @@
   },
   {
     "id": "scene4cand_v7",
-    "title": "Scene 4 — candidate V7: “Runway flicker” (new approach)",
+    "title": "Scene 4 — candidate V7: “Runway flicker” (fade version)",
     "page": 76,
     "file": "previews/scene4_v7_runway.mp4",
     "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170)",
-    "notes": "A different approach: your externally-generated runway flicker is conformed into the scene (its glow/grain look kept), then dissolves seamlessly into the REAL Ghost footage so she lowers her hood and plays out. The runway figure already sits where our Ghost stands, so the join holds size+position. OPEN tweakables: lead-in length (currently a 1.5s man-hold), the soft gray floor band in the runway part (absent in the real Ghost), and how long the Ghost holds at the end. The hood-off reads softly in silhouette (a collar/hair peak stays) — that's the footage."
+    "notes": "First runway version: runway transition (look kept) DISSOLVES into the real Ghost footage. Superseded by V8, which aligns the figures and hard-cuts instead. Kept for comparison."
   },
   {
     "id": "scene4cand_v1",
@@ -252,5 +337,13 @@
     "file": "previews/scene4_v6_chargematerialize.mp4",
     "source": "IMG_2170.MOV (recompose of the cached passes)",
     "notes": "Moriarty accelerates out (like V4), then the energy passes to the Ghost — she flickers IN fast and settles solid, rather than a single hard pop."
+  },
+  {
+    "id": "scene4cand_v8",
+    "title": "Scene 4 — candidate V8: “Runway flicker” (aligned hard cut)",
+    "page": 76,
+    "file": "previews/scene4_v8_runway_cut.mp4",
+    "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170)",
+    "notes": "V7 fixed: the real Ghost is raised + rescaled so its head/feet/center match the runway Ghost exactly at the seam (~6.5s), so it HARD-CUTS in with no fade. One leftover: the runway part has a soft gray floor band that pops to pure white at the cut — can unify if wanted. Lead-in is still a 1.5s man-hold; Ghost holds ~11s after."
   }
 ]
