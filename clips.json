@@ -195,7 +195,7 @@
   },
   {
     "section": "Scene 4 — flicker redesign (candidates for review)",
-    "note": "Reworks of the Moriarty→Ghost transition (p.76). The current approved Scene 4 above reads too 'flashy' (a fast strobe on white). These three make him deliberately FLICKER OUT a few times, then the Ghost POPS in. Watch the last ~3 seconds of each, then pick one (or ask for a tweak). The approved clip above is unchanged until a pick is made."
+    "note": "Reworks of the Moriarty->Ghost transition (p.76). The current approved Scene 4 above reads too 'flashy'. Two batches of alternatives — watch the last ~3 seconds of each, then pick one (or ask for a tweak); the approved clip above is unchanged until a pick is made. BATCH 1 (V1-V3): he deliberately FLICKERS OUT a few times, then the Ghost POPS in. BATCH 2 (V4-V6): the flicker ACCELERATES — fast, then much faster — before the swap."
   },
   {
     "id": "scene4cand_v1",
@@ -220,5 +220,29 @@
     "file": "previews/scene4_v3_slowcollapse.mp4",
     "source": "IMG_2170.MOV (recompose of the cached passes)",
     "notes": "Only 2 long, slow flicker-outs and a longer fade to gone, then the Ghost MATERIALIZES (one quick blink) and holds. Most deliberate / séance-y."
+  },
+  {
+    "id": "scene4cand_v4",
+    "title": "Scene 4 — candidate V4: “Accelerando”",
+    "page": 76,
+    "file": "previews/scene4_v4_accel.mp4",
+    "source": "IMG_2170.MOV (recompose of the cached passes)",
+    "notes": "The flicker accelerates smoothly — fast, then much faster — until he snaps out; a short empty beat, then the Ghost hard-pops in solid."
+  },
+  {
+    "id": "scene4cand_v5",
+    "title": "Scene 4 — candidate V5: “Two gears”",
+    "page": 76,
+    "file": "previews/scene4_v5_twogear.mp4",
+    "source": "IMG_2170.MOV (recompose of the cached passes)",
+    "notes": "Two distinct speeds: a few fast flickers, then a much-faster burst, then gone and the Ghost pops. Same idea as V4 but in two clear 'gears' instead of a smooth ramp."
+  },
+  {
+    "id": "scene4cand_v6",
+    "title": "Scene 4 — candidate V6: “Charge + materialize”",
+    "page": 76,
+    "file": "previews/scene4_v6_chargematerialize.mp4",
+    "source": "IMG_2170.MOV (recompose of the cached passes)",
+    "notes": "Moriarty accelerates out (like V4), then the energy passes to the Ghost — she flickers IN fast and settles solid, rather than a single hard pop."
   }
 ]
