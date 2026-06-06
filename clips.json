@@ -269,5 +269,13 @@
     "file": "previews/title_card_noteworthy.mp4",
     "source": "Generated (scripts/make_title_card.py)",
     "notes": "Clean, even casual hand — legible and friendly, a middle ground between A and B."
+  },
+  {
+    "id": "scene4cand_v7",
+    "title": "Scene 4 — candidate V7: “Runway flicker” (new approach)",
+    "page": 76,
+    "file": "previews/scene4_v7_runway.mp4",
+    "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170)",
+    "notes": "A different approach: your externally-generated runway flicker is conformed into the scene (its glow/grain look kept), then dissolves seamlessly into the REAL Ghost footage so she lowers her hood and plays out. The runway figure already sits where our Ghost stands, so the join holds size+position. OPEN tweakables: lead-in length (currently a 1.5s man-hold), the soft gray floor band in the runway part (absent in the real Ghost), and how long the Ghost holds at the end. The hood-off reads softly in silhouette (a collar/hair peak stays) — that's the footage."
   }
 ]
