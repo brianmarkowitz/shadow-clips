@@ -198,6 +198,14 @@
     "note": "Reworks of the Moriarty->Ghost transition (p.76). The current approved Scene 4 above reads too 'flashy'. Two batches of alternatives — watch the last ~3 seconds of each, then pick one (or ask for a tweak); the approved clip above is unchanged until a pick is made. BATCH 1 (V1-V3): he deliberately FLICKERS OUT a few times, then the Ghost POPS in. BATCH 2 (V4-V6): the flicker ACCELERATES — fast, then much faster — before the swap."
   },
   {
+    "id": "scene4cand_v7",
+    "title": "Scene 4 — candidate V7: “Runway flicker” (new approach)",
+    "page": 76,
+    "file": "previews/scene4_v7_runway.mp4",
+    "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170)",
+    "notes": "A different approach: your externally-generated runway flicker is conformed into the scene (its glow/grain look kept), then dissolves seamlessly into the REAL Ghost footage so she lowers her hood and plays out. The runway figure already sits where our Ghost stands, so the join holds size+position. OPEN tweakables: lead-in length (currently a 1.5s man-hold), the soft gray floor band in the runway part (absent in the real Ghost), and how long the Ghost holds at the end. The hood-off reads softly in silhouette (a collar/hair peak stays) — that's the footage."
+  },
+  {
     "id": "scene4cand_v1",
     "title": "Scene 4 — candidate V1: “Dying bulb”",
     "page": 76,
@@ -244,13 +252,5 @@
     "file": "previews/scene4_v6_chargematerialize.mp4",
     "source": "IMG_2170.MOV (recompose of the cached passes)",
     "notes": "Moriarty accelerates out (like V4), then the energy passes to the Ghost — she flickers IN fast and settles solid, rather than a single hard pop."
-  },
-  {
-    "id": "scene4cand_v7",
-    "title": "Scene 4 — candidate V7: “Runway flicker” (new approach)",
-    "page": 76,
-    "file": "previews/scene4_v7_runway.mp4",
-    "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170)",
-    "notes": "A different approach: your externally-generated runway flicker is conformed into the scene (its glow/grain look kept), then dissolves seamlessly into the REAL Ghost footage so she lowers her hood and plays out. The runway figure already sits where our Ghost stands, so the join holds size+position. OPEN tweakables: lead-in length (currently a 1.5s man-hold), the soft gray floor band in the runway part (absent in the real Ghost), and how long the Ghost holds at the end. The hood-off reads softly in silhouette (a collar/hair peak stays) — that's the footage."
   }
 ]
