@@ -111,10 +111,10 @@
     "id": "scene4",
     "title": "Scene 4 — Séance: Moriarty flickers to the Ghost",
     "page": 76,
-    "file": "clips/scene4_seance_flicker_swap.mp4",
-    "poster": "clips/scene4_seance_flicker_swap.jpg",
-    "source": "IMG_2170.MOV",
-    "notes": "Moriarty (man, coat, bowler) flickers out; the Ghost (woman, hooded cloak) flickers in. Flicker-swap effect straddles the transformation.",
+    "file": "clips/scene4_seance_runway.mp4",
+    "poster": "clips/scene4_seance_runway.jpg",
+    "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170.MOV)",
+    "notes": "Runway-flicker version: an externally-generated flicker transition (Moriarty -> Ghost, its glow/grain look kept) hard-cuts into the real Ghost footage, which is rescaled/positioned to line up exactly at the seam so it reads as one shot. She then lowers her hood and plays out.",
     "review": {
       "projectionist": "approved",
       "director": "pending"
@@ -260,7 +260,7 @@
   },
   {
     "section": "Scene 4 — flicker redesign (candidates for review)",
-    "note": "Reworks of the Moriarty->Ghost transition (p.76). The current approved Scene 4 above reads too 'flashy'. Two batches of alternatives — watch the last ~3 seconds of each, then pick one (or ask for a tweak); the approved clip above is unchanged until a pick is made. BATCH 1 (V1-V3): he deliberately FLICKERS OUT a few times, then the Ghost POPS in. BATCH 2 (V4-V6): the flicker ACCELERATES — fast, then much faster — before the swap."
+    "note": "Alternatives explored for the Moriarty->Ghost transition (p.76). V8 (the aligned runway hard-cut) was chosen and is now the Scene 4 above. The rest are kept for reference: V1-V3 flicker-out then pop; V4-V6 accelerating flicker; V7 the runway version with a fade (before alignment)."
   },
   {
     "id": "scene4cand_v7",
@@ -317,13 +317,5 @@
     "file": "previews/scene4_v6_chargematerialize.mp4",
     "source": "IMG_2170.MOV (recompose of the cached passes)",
     "notes": "Moriarty accelerates out (like V4), then the energy passes to the Ghost — she flickers IN fast and settles solid, rather than a single hard pop."
-  },
-  {
-    "id": "scene4cand_v8",
-    "title": "Scene 4 — candidate V8: “Runway flicker” (aligned hard cut)",
-    "page": 76,
-    "file": "previews/scene4_v8_runway_cut.mp4",
-    "source": "runway_flicker.mp4 transition + real Ghost footage (IMG_2170)",
-    "notes": "V7 fixed: the real Ghost is raised + rescaled so its head/feet/center match the runway Ghost exactly at the seam (~6.5s), so it HARD-CUTS in with no fade. One leftover: the runway part has a soft gray floor band that pops to pure white at the cut — can unify if wanted. Lead-in is still a 1.5s man-hold; Ghost holds ~11s after."
   }
 ]
