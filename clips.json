@@ -244,5 +244,30 @@
     "file": "previews/scene4_v6_chargematerialize.mp4",
     "source": "IMG_2170.MOV (recompose of the cached passes)",
     "notes": "Moriarty accelerates out (like V4), then the energy passes to the Ghost — she flickers IN fast and settles solid, rather than a single hard pop."
+  },
+  {
+    "section": "Title card — 1.1 → 1.2 transition (candidates for review)",
+    "note": "Black-on-white title card to bring up on the scene-1 scream (the cold-open hand-off into 1.2). The show title writes on by hand — ink appears in reading order with a soft pen-tip nib — holds, then fades. Waterfall mist drifts up the left & right edges. 8s (write ~4s / hold ~3s / fade ~1s), 1920×1080 60fps, drops straight into the projection set. Three handwriting faces below — watch the motion and pick a face (or ask for a tweak: wording, line breaks, a byline/'Act One' line, mist amount, timing)."
+  },
+  {
+    "id": "titlecard_snell",
+    "title": "Title card — A: Snell Roundhand (elegant Victorian script)",
+    "file": "previews/title_card_snell.mp4",
+    "source": "Generated (scripts/make_title_card.py)",
+    "notes": "Formal copperplate hand — most period / 'handwritten letter' feel. Connected script, so the write-on reads most like a pen moving. Ornate; judge legibility from the back of the house."
+  },
+  {
+    "id": "titlecard_bradley",
+    "title": "Title card — B: Bradley Hand (legible casual hand)",
+    "file": "previews/title_card_bradley.mp4",
+    "source": "Generated (scripts/make_title_card.py)",
+    "notes": "Bold casual handwriting — the most legible of the three, more modern feel. Letters are separate, so the write-on reads as ink filling in left-to-right."
+  },
+  {
+    "id": "titlecard_noteworthy",
+    "title": "Title card — C: Noteworthy (clean casual hand)",
+    "file": "previews/title_card_noteworthy.mp4",
+    "source": "Generated (scripts/make_title_card.py)",
+    "notes": "Clean, even casual hand — legible and friendly, a middle ground between A and B."
   }
 ]
