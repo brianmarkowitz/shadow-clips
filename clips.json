@@ -7,7 +7,10 @@
     "poster": "clips/IMG_2172_f6097-6554_silhouette.jpg",
     "source": "IMG_2172.MOV (cut f6097–6554, 458 frames)",
     "notes": "Holmes faces front, turns to profile, then walks frame-right and exits. Plain single-subject silhouette.",
-    "review": { "projectionist": "approved", "director": "pending" }
+    "review": {
+      "projectionist": "approved",
+      "director": "pending"
+    }
   },
   {
     "id": "scene2",
@@ -19,7 +22,10 @@
     "cue_in": "I pushed you…",
     "cue_out": "Beyond your control.",
     "notes": "Moriarty stands menacing at the table, then walks frame-left and exits. Plain single-subject silhouette.",
-    "review": { "projectionist": "approved", "director": "pending" }
+    "review": {
+      "projectionist": "approved",
+      "director": "pending"
+    }
   },
   {
     "id": "scene3",
@@ -31,7 +37,10 @@
     "cue_in": "Moriarty",
     "cue_out": "I have work to do",
     "notes": "Moriarty enters frame-left, walks to centre, holds centre menacing/gesturing, then walks frame-right. Plain single-subject silhouette. Walk-in/out leg-gap timing de-popped so the legs separate on the same frame as the source instead of snapping open a couple frames late.",
-    "review": { "projectionist": "approved", "director": "pending" }
+    "review": {
+      "projectionist": "approved",
+      "director": "pending"
+    }
   },
   {
     "id": "scene4",
@@ -41,7 +50,10 @@
     "poster": "clips/scene4_seance_flicker_swap.jpg",
     "source": "IMG_2170.MOV",
     "notes": "Moriarty (man, coat, bowler) flickers out; the Ghost (woman, hooded cloak) flickers in. Flicker-swap effect straddles the transformation.",
-    "review": { "projectionist": "approved", "director": "pending" }
+    "review": {
+      "projectionist": "approved",
+      "director": "pending"
+    }
   },
   {
     "id": "scene5",
@@ -51,7 +63,10 @@
     "poster": "clips/scene5_fight.jpg",
     "source": "IMG_2167.MOV (whole file, 6834 frames, 114s)",
     "notes": "Moriarty solo, Holmes enters, the grapple at the falls, the deerstalker falls and lands, Holmes downed, Moriarty exits, Holmes returns alone. Single union silhouette.",
-    "review": { "projectionist": "approved", "director": "pending" }
+    "review": {
+      "projectionist": "approved",
+      "director": "pending"
+    }
   },
   {
     "id": "scene6",
@@ -63,7 +78,10 @@
     "cue_in": "I'll be back",
     "cue_out": "",
     "notes": "Moriarty stands center and reaches his right arm toward off-frame Holmes. Plain single-subject silhouette.",
-    "review": { "projectionist": "approved", "director": "pending" }
+    "review": {
+      "projectionist": "approved",
+      "director": "pending"
+    }
   },
   {
     "section": "Additional Moriarty footage",
@@ -86,7 +104,10 @@
     "poster": "clips/clapping_IMG_2158_f8288-8794_silhouette.jpg",
     "source": "IMG_2158.MOV (cut f8288–8794, 507 frames)",
     "notes": "Silhouette of the raw clip above. He walks frame-right to frame-left and exits; legs read as an open/merged shadow through the stride.",
-    "review": { "projectionist": "pending", "director": "pending" }
+    "review": {
+      "projectionist": "pending",
+      "director": "pending"
+    }
   },
   {
     "id": "addl-book",
@@ -104,7 +125,10 @@
     "poster": "clips/book_IMG_2158_f12096-12598_silhouette.jpg",
     "source": "IMG_2158.MOV (cut f12096–12598, 503 frames)",
     "notes": "Silhouette of the raw clip above. The held book reads in the silhouette.",
-    "review": { "projectionist": "pending", "director": "pending" }
+    "review": {
+      "projectionist": "pending",
+      "director": "pending"
+    }
   },
   {
     "id": "addl-hand-to-face",
@@ -122,7 +146,10 @@
     "poster": "clips/hand_to_face_IMG_2158_f14980-15360_silhouette.jpg",
     "source": "IMG_2158.MOV (cut f14980–15360, 381 frames)",
     "notes": "Silhouette of the raw clip above.",
-    "review": { "projectionist": "pending", "director": "pending" }
+    "review": {
+      "projectionist": "pending",
+      "director": "pending"
+    }
   },
   {
     "id": "addl-hand-to-face-take2",
@@ -140,7 +167,10 @@
     "poster": "clips/hand_to_face_take2_IMG_2158_f15723-16209_silhouette.jpg",
     "source": "IMG_2158.MOV (cut f15723–16209, 487 frames)",
     "notes": "Silhouette of the raw clip above.",
-    "review": { "projectionist": "pending", "director": "pending" }
+    "review": {
+      "projectionist": "pending",
+      "director": "pending"
+    }
   },
   {
     "id": "addl-arms-raised",
@@ -158,6 +188,37 @@
     "poster": "clips/arms_raised_IMG_2158_f17570-17891_silhouette.jpg",
     "source": "IMG_2158.MOV (cut f17570–17891, 322 frames)",
     "notes": "Silhouette of the raw clip above. The wide arm-spread reads cleanly.",
-    "review": { "projectionist": "pending", "director": "pending" }
+    "review": {
+      "projectionist": "pending",
+      "director": "pending"
+    }
+  },
+  {
+    "section": "Scene 4 — flicker redesign (candidates for review)",
+    "note": "Reworks of the Moriarty→Ghost transition (p.76). The current approved Scene 4 above reads too 'flashy' (a fast strobe on white). These three make him deliberately FLICKER OUT a few times, then the Ghost POPS in. Watch the last ~3 seconds of each, then pick one (or ask for a tweak). The approved clip above is unchanged until a pick is made."
+  },
+  {
+    "id": "scene4cand_v1",
+    "title": "Scene 4 — candidate V1: “Dying bulb”",
+    "page": 76,
+    "file": "previews/scene4_v1_dyingbulb.mp4",
+    "source": "IMG_2170.MOV (recompose of the cached passes)",
+    "notes": "He blinks fully OUT and back 3 times, the gaps widening each time, then he's gone — a short empty-stage beat — then the Ghost SNAPS in solid. Cleanest read; no ghost peek-through."
+  },
+  {
+    "id": "scene4cand_v2",
+    "title": "Scene 4 — candidate V2: “Two worlds”",
+    "page": 76,
+    "file": "previews/scene4_v2_tease.mp4",
+    "source": "IMG_2170.MOV (recompose of the cached passes)",
+    "notes": "Same flicker-outs, but in the last gaps the Ghost shows THROUGH instead of white — the two figures phase man↔ghost, one last Moriarty flash 'fighting', then gone and the Ghost pops. Most dramatic; a touch busier."
+  },
+  {
+    "id": "scene4cand_v3",
+    "title": "Scene 4 — candidate V3: “Slow collapse”",
+    "page": 76,
+    "file": "previews/scene4_v3_slowcollapse.mp4",
+    "source": "IMG_2170.MOV (recompose of the cached passes)",
+    "notes": "Only 2 long, slow flicker-outs and a longer fade to gone, then the Ghost MATERIALIZES (one quick blink) and holds. Most deliberate / séance-y."
   }
 ]
