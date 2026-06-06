@@ -2,15 +2,15 @@
   {
     "section": "Title card",
     "id": "title-card",
-    "note": "The opening title card for the show — this is the pick (idea 1). The other nine ideas are further down under \"Title card — other ideas\"."
+    "note": "The opening title card for the show — this is the pick. Eight more candidates (each from a different AI video generator) are further down under \"Title card — other ideas\"."
   },
   {
-    "id": "title-card-1",
-    "title": "Title card — idea 1 (chosen)",
-    "file": "clips/title_card_1.mp4",
-    "poster": "clips/title_card_1.jpg",
-    "source": "title_card_1.mp4 · 1920×1080 · 10s · 24fps",
-    "notes": "Highest-resolution version. The title hand-writes on over the first part of the clip, then holds while the watercolor mist drifts. Note: ideas 3 and 6 are byte-for-byte the same file as this one."
+    "id": "title-card-seedance2-bw",
+    "title": "Title card — Seedance 2.0 (chosen)",
+    "file": "clips/tc_seedance2_bw.mp4",
+    "poster": "clips/tc_seedance2_bw.jpg",
+    "source": "Seedance 2.0 · 1920×1080 · 10.1s · 24fps · prompt: black-on-white \"animate the text\"",
+    "notes": "The pick. Made with the Seedance 2.0 generator from the black-on-white \"animate the text 'The Reluctant Resurrection of Sherlock Holmes'\" prompt. The cursive title hand-writes on over the first part of the clip, then holds while the watercolor mist drifts past the Holmes silhouette."
   },
   {
     "id": "scene1",
@@ -99,79 +99,71 @@
   {
     "section": "Title card — other ideas",
     "id": "title-card-others",
-    "note": "The other nine title-card ideas, kept as alternates to the chosen one at the top. Each card lists its filename and specs, plus whatever I could verify is different. Heads-up: some are duplicate files — ideas 3 and 6 are the same render as idea 1, and idea 5 is the same as idea 2 — so they'll play identically."
+    "note": "Eight more title-card candidates, each from a different AI video generator (named in its Source line, taken from the original filename). All share the same design — the cursive title hand-writing on beside a Holmes silhouette with drifting watercolor mist — so they differ mainly in the generator, the resolution/sharpness, and how fast the lettering draws on. Two prompt wordings were used: a \"black on white — animate the text\" prompt and a \"title card for a theater production of\" prompt."
   },
   {
-    "id": "title-card-2",
-    "title": "Title card — idea 2",
-    "file": "clips/title_card_2.mp4",
-    "poster": "clips/title_card_2.jpg",
-    "source": "title_card_2.mp4 · 1280×720 · 10s · 24fps",
-    "notes": "720p render. Byte-for-byte identical to idea 5."
+    "id": "title-card-kling-o3-4k-bw",
+    "title": "Title card — Kling O3 4K (black-on-white prompt)",
+    "file": "clips/tc_kling_o3_4k_bw.mp4",
+    "poster": "clips/tc_kling_o3_4k_bw.jpg",
+    "source": "Kling O3 4K · 3836×2160 · 10.0s · 24fps · prompt: black-on-white \"animate the text\"",
+    "notes": "The only true-4K renders are this and the next one — much sharper than the others. Made with the Kling O3 4K generator from the black-on-white \"animate the text\" prompt."
   },
   {
-    "id": "title-card-3",
-    "title": "Title card — idea 3",
-    "file": "clips/title_card_3.mp4",
-    "poster": "clips/title_card_3.jpg",
-    "source": "title_card_3.mp4 · 1920×1080 · 10s · 24fps",
-    "notes": "Byte-for-byte identical to idea 1 (same render)."
+    "id": "title-card-kling-o3-4k-titlecard",
+    "title": "Title card — Kling O3 4K (theater-title-card prompt)",
+    "file": "clips/tc_kling_o3_4k_titlecard.mp4",
+    "poster": "clips/tc_kling_o3_4k_titlecard.jpg",
+    "source": "Kling O3 4K · 3836×2160 · 10.0s · 24fps · prompt: \"title card for a theater production of\"",
+    "notes": "Same 4K Kling O3 generator as above, but from the \"title card for a theater production of\" prompt. Same design; the end frame looks near-identical to the other 4K version."
   },
   {
-    "id": "title-card-4",
-    "title": "Title card — idea 4",
-    "file": "clips/title_card_4.mp4",
-    "poster": "clips/title_card_4.jpg",
-    "source": "title_card_4.mp4 · 1280×720 · 10s · 24fps",
-    "notes": "A separate 720p render that writes on and then holds, like idea 1. It's a distinct file, but I couldn't identify what visually distinguishes it from the other 10-second 720p versions."
+    "id": "title-card-kling3pro-bw",
+    "title": "Title card — Kling 3.0 Pro (black-on-white prompt)",
+    "file": "clips/tc_kling3pro_bw.mp4",
+    "poster": "clips/tc_kling3pro_bw.jpg",
+    "source": "Kling 3.0 Pro · 1916×1080 · 10.0s · 24fps · prompt: black-on-white \"animate the text\"",
+    "notes": "Made with Kling 3.0 Pro. Slower write-on: the lettering is still being drawn through most of the clip and finishes near the end, rather than completing early and holding."
   },
   {
-    "id": "title-card-5",
-    "title": "Title card — idea 5",
-    "file": "clips/title_card_5.mp4",
-    "poster": "clips/title_card_5.jpg",
-    "source": "title_card_5.mp4 · 1280×720 · 10s · 24fps",
-    "notes": "Byte-for-byte identical to idea 2 (same render)."
+    "id": "title-card-kling3pro-titlecard",
+    "title": "Title card — Kling 3.0 Pro (theater-title-card prompt)",
+    "file": "clips/tc_kling3pro_titlecard.mp4",
+    "poster": "clips/tc_kling3pro_titlecard.jpg",
+    "source": "Kling 3.0 Pro · 1916×1080 · 10.0s · 24fps · prompt: \"title card for a theater production of\"",
+    "notes": "Kling 3.0 Pro from the theater-title-card prompt. Slowest write-on of the set — the title finishes drawing right at the very end (at the 7-second mark it's a full line behind the black-on-white Kling 3.0 Pro version)."
   },
   {
-    "id": "title-card-6",
-    "title": "Title card — idea 6",
-    "file": "clips/title_card_6.mp4",
-    "poster": "clips/title_card_6.jpg",
-    "source": "title_card_6.mp4 · 1920×1080 · 10s · 24fps",
-    "notes": "Byte-for-byte identical to idea 1 (same render)."
+    "id": "title-card-seedance2-bw-take2",
+    "title": "Title card — Seedance 2.0 (black-on-white, take 2)",
+    "file": "clips/tc_seedance2_bw_take2.mp4",
+    "poster": "clips/tc_seedance2_bw_take2.jpg",
+    "source": "Seedance 2.0 · 1280×720 · 10.1s · 24fps · prompt: black-on-white \"animate the text\"",
+    "notes": "A second Seedance 2.0 take from the same prompt as the chosen one, at 720p. Writes on and then holds; visually very close to the chosen version but a distinct render."
   },
   {
-    "id": "title-card-7",
-    "title": "Title card — idea 7",
-    "file": "clips/title_card_7.mp4",
-    "poster": "clips/title_card_7.jpg",
-    "source": "title_card_7.mp4 · 1916×1080 · 10s · 24fps",
-    "notes": "Slower write-on: the lettering is still being drawn through most of the clip and finishes near the end, rather than completing early and holding like idea 1."
+    "id": "title-card-seedance2-fast",
+    "title": "Title card — Seedance 2.0 Fast (black-on-white)",
+    "file": "clips/tc_seedance2_fast.mp4",
+    "poster": "clips/tc_seedance2_fast.jpg",
+    "source": "Seedance 2.0 Fast · 1280×720 · 10.0s · 24fps · prompt: black-on-white \"animate the text\"",
+    "notes": "Made with the faster Seedance 2.0 Fast model tier (\"Fast\" refers to the generator, not the on-screen animation), at 720p. Same design as the chosen Seedance version."
   },
   {
-    "id": "title-card-8",
-    "title": "Title card — idea 8",
-    "file": "clips/title_card_8.mp4",
-    "poster": "clips/title_card_8.jpg",
-    "source": "title_card_8.mp4 · 1916×1080 · 10s · 24fps",
-    "notes": "Slowest write-on: the title finishes drawing right at the very end — even slower than idea 7 (at the 7-second mark it's a full line behind idea 7)."
+    "id": "title-card-gen45",
+    "title": "Title card — Gen-4.5 (theater-title-card prompt)",
+    "file": "clips/tc_gen45.mp4",
+    "poster": "clips/tc_gen45.jpg",
+    "source": "Gen-4.5 · 1280×720 · 10.0s · 24fps · prompt: \"title card for a theater production of\"",
+    "notes": "Made with the Gen-4.5 generator from the theater-title-card prompt, at 720p. Writes on and then holds."
   },
   {
-    "id": "title-card-9",
-    "title": "Title card — idea 9",
-    "file": "clips/title_card_9.mp4",
-    "poster": "clips/title_card_9.jpg",
-    "source": "title_card_9.mp4 · 1280×720 · 10s · 24fps",
-    "notes": "A separate 720p render that writes on and then holds, like idea 1. It's a distinct file, but I couldn't identify what visually distinguishes it from the other 10-second 720p versions."
-  },
-  {
-    "id": "title-card-10",
-    "title": "Title card — idea 10",
-    "file": "clips/title_card_10.mp4",
-    "poster": "clips/title_card_10.jpg",
-    "source": "title_card_10.mp4 · 1280×720 · 5s · 24fps",
-    "notes": "The short cut — half the length (121 frames vs 241), so the whole write-on plays in about 5 seconds instead of 10."
+    "id": "title-card-gen45-short",
+    "title": "Title card — Gen-4.5 (5-second short cut)",
+    "file": "clips/tc_gen45_short.mp4",
+    "poster": "clips/tc_gen45_short.jpg",
+    "source": "Gen-4.5 · 1280×720 · 5.0s · 24fps · prompt: \"title card for a theater production of\"",
+    "notes": "The short one — same Gen-4.5 generator and prompt as above, but half the length (121 frames vs 241), so the whole write-on plays in about 5 seconds."
   },
   {
     "section": "Additional Moriarty footage",
