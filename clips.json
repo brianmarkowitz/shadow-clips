@@ -8,7 +8,9 @@
     "id": "title-card-1",
     "title": "Title card — idea 1 (chosen)",
     "file": "clips/title_card_1.mp4",
-    "poster": "clips/title_card_1.jpg"
+    "poster": "clips/title_card_1.jpg",
+    "source": "title_card_1.mp4 · 1920×1080 · 10s · 24fps",
+    "notes": "Highest-resolution version. The title hand-writes on over the first part of the clip, then holds while the watercolor mist drifts. Note: ideas 3 and 6 are byte-for-byte the same file as this one."
   },
   {
     "id": "scene1",
@@ -97,61 +99,79 @@
   {
     "section": "Title card — other ideas",
     "id": "title-card-others",
-    "note": "The other nine title-card ideas, kept as alternates to the chosen one at the top."
+    "note": "The other nine title-card ideas, kept as alternates to the chosen one at the top. Each card lists its filename and specs, plus whatever I could verify is different. Heads-up: some are duplicate files — ideas 3 and 6 are the same render as idea 1, and idea 5 is the same as idea 2 — so they'll play identically."
   },
   {
     "id": "title-card-2",
     "title": "Title card — idea 2",
     "file": "clips/title_card_2.mp4",
-    "poster": "clips/title_card_2.jpg"
+    "poster": "clips/title_card_2.jpg",
+    "source": "title_card_2.mp4 · 1280×720 · 10s · 24fps",
+    "notes": "720p render. Byte-for-byte identical to idea 5."
   },
   {
     "id": "title-card-3",
     "title": "Title card — idea 3",
     "file": "clips/title_card_3.mp4",
-    "poster": "clips/title_card_3.jpg"
+    "poster": "clips/title_card_3.jpg",
+    "source": "title_card_3.mp4 · 1920×1080 · 10s · 24fps",
+    "notes": "Byte-for-byte identical to idea 1 (same render)."
   },
   {
     "id": "title-card-4",
     "title": "Title card — idea 4",
     "file": "clips/title_card_4.mp4",
-    "poster": "clips/title_card_4.jpg"
+    "poster": "clips/title_card_4.jpg",
+    "source": "title_card_4.mp4 · 1280×720 · 10s · 24fps",
+    "notes": "A separate 720p render that writes on and then holds, like idea 1. It's a distinct file, but I couldn't identify what visually distinguishes it from the other 10-second 720p versions."
   },
   {
     "id": "title-card-5",
     "title": "Title card — idea 5",
     "file": "clips/title_card_5.mp4",
-    "poster": "clips/title_card_5.jpg"
+    "poster": "clips/title_card_5.jpg",
+    "source": "title_card_5.mp4 · 1280×720 · 10s · 24fps",
+    "notes": "Byte-for-byte identical to idea 2 (same render)."
   },
   {
     "id": "title-card-6",
     "title": "Title card — idea 6",
     "file": "clips/title_card_6.mp4",
-    "poster": "clips/title_card_6.jpg"
+    "poster": "clips/title_card_6.jpg",
+    "source": "title_card_6.mp4 · 1920×1080 · 10s · 24fps",
+    "notes": "Byte-for-byte identical to idea 1 (same render)."
   },
   {
     "id": "title-card-7",
     "title": "Title card — idea 7",
     "file": "clips/title_card_7.mp4",
-    "poster": "clips/title_card_7.jpg"
+    "poster": "clips/title_card_7.jpg",
+    "source": "title_card_7.mp4 · 1916×1080 · 10s · 24fps",
+    "notes": "Slower write-on: the lettering is still being drawn through most of the clip and finishes near the end, rather than completing early and holding like idea 1."
   },
   {
     "id": "title-card-8",
     "title": "Title card — idea 8",
     "file": "clips/title_card_8.mp4",
-    "poster": "clips/title_card_8.jpg"
+    "poster": "clips/title_card_8.jpg",
+    "source": "title_card_8.mp4 · 1916×1080 · 10s · 24fps",
+    "notes": "Slowest write-on: the title finishes drawing right at the very end — even slower than idea 7 (at the 7-second mark it's a full line behind idea 7)."
   },
   {
     "id": "title-card-9",
     "title": "Title card — idea 9",
     "file": "clips/title_card_9.mp4",
-    "poster": "clips/title_card_9.jpg"
+    "poster": "clips/title_card_9.jpg",
+    "source": "title_card_9.mp4 · 1280×720 · 10s · 24fps",
+    "notes": "A separate 720p render that writes on and then holds, like idea 1. It's a distinct file, but I couldn't identify what visually distinguishes it from the other 10-second 720p versions."
   },
   {
     "id": "title-card-10",
     "title": "Title card — idea 10",
     "file": "clips/title_card_10.mp4",
-    "poster": "clips/title_card_10.jpg"
+    "poster": "clips/title_card_10.jpg",
+    "source": "title_card_10.mp4 · 1280×720 · 5s · 24fps",
+    "notes": "The short cut — half the length (121 frames vs 241), so the whole write-on plays in about 5 seconds instead of 10."
   },
   {
     "section": "Additional Moriarty footage",
