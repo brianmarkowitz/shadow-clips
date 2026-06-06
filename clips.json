@@ -268,6 +268,14 @@
     "note": "Alternatives explored for the Moriarty->Ghost transition (p.76). V8 (the aligned runway hard-cut) was chosen and is now the Scene 4 above. The rest are kept for reference: V1-V3 flicker-out then pop; V4-V6 accelerating flicker; V7 the runway version with a fade (before alignment)."
   },
   {
+    "id": "scene4cand_v9",
+    "title": "Scene 4 — candidate V9: runway + front Moriarty (full)",
+    "page": 76,
+    "file": "previews/scene4_v9_runway_front.mp4",
+    "source": "real Moriarty (IMG_2170) + runway_flicker.mp4 + real Ghost (IMG_2170)",
+    "notes": "V8 with the FRONT footage added: real moving Moriarty is aligned to the runway man (head exact, feet within 3px) and HARD-CUTS into the runway transition, just like the Ghost on the back end. Now: real Moriarty moves -> runway flicker -> real Ghost hood-off, both seams matched. Leftover: the soft gray floor band now bookends the runway middle (appears at the front cut, gone at the back). Front uses the full ~9s of his movement; can trim to taste. Promote to #1 when you approve."
+  },
+  {
     "id": "scene4cand_v7",
     "title": "Scene 4 — candidate V7: “Runway flicker” (fade version)",
     "page": 76,
