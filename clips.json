@@ -2,87 +2,67 @@
   {
     "section": "Title card",
     "id": "title-card",
-    "note": "Opening title card for the show — candidate designs to pick from. Same artwork and lettering (the title hand-writes on over a watercolor Holmes silhouette with drifting mist); the variants differ in resolution, length, and write-on/mist pacing. Note: a few are the same render — V1, V3 and V6 are identical, and V2 and V5 are identical — so there are 6 distinct looks among the ten. Watch, then pick one (or ask for a tweak)."
+    "note": "Ten title-card ideas for the show's opening — different takes on the same concept, for the team to look over."
   },
   {
-    "id": "title-card-v1",
-    "title": "Title card — V1",
+    "id": "title-card-1",
+    "title": "Title card — idea 1",
     "file": "clips/title_card_1.mp4",
-    "poster": "clips/title_card_1.jpg",
-    "source": "Title-card candidate render (1920×1080, 10s)",
-    "notes": "The lettering writes on, then holds with drifting mist. Same render as V3 and V6."
+    "poster": "clips/title_card_1.jpg"
   },
   {
-    "id": "title-card-v2",
-    "title": "Title card — V2",
+    "id": "title-card-2",
+    "title": "Title card — idea 2",
     "file": "clips/title_card_2.mp4",
-    "poster": "clips/title_card_2.jpg",
-    "source": "Title-card candidate render (1280×720, 10s)",
-    "notes": "Same look as V1 at 720p. Same render as V5."
+    "poster": "clips/title_card_2.jpg"
   },
   {
-    "id": "title-card-v3",
-    "title": "Title card — V3",
+    "id": "title-card-3",
+    "title": "Title card — idea 3",
     "file": "clips/title_card_3.mp4",
-    "poster": "clips/title_card_3.jpg",
-    "source": "Title-card candidate render (1920×1080, 10s)",
-    "notes": "Identical render to V1 (kept for completeness)."
+    "poster": "clips/title_card_3.jpg"
   },
   {
-    "id": "title-card-v4",
-    "title": "Title card — V4",
+    "id": "title-card-4",
+    "title": "Title card — idea 4",
     "file": "clips/title_card_4.mp4",
-    "poster": "clips/title_card_4.jpg",
-    "source": "Title-card candidate render (1280×720, 10s)",
-    "notes": "720p variant; write-on completes early and holds."
+    "poster": "clips/title_card_4.jpg"
   },
   {
-    "id": "title-card-v5",
-    "title": "Title card — V5",
+    "id": "title-card-5",
+    "title": "Title card — idea 5",
     "file": "clips/title_card_5.mp4",
-    "poster": "clips/title_card_5.jpg",
-    "source": "Title-card candidate render (1280×720, 10s)",
-    "notes": "Identical render to V2 (kept for completeness)."
+    "poster": "clips/title_card_5.jpg"
   },
   {
-    "id": "title-card-v6",
-    "title": "Title card — V6",
+    "id": "title-card-6",
+    "title": "Title card — idea 6",
     "file": "clips/title_card_6.mp4",
-    "poster": "clips/title_card_6.jpg",
-    "source": "Title-card candidate render (1920×1080, 10s)",
-    "notes": "Identical render to V1 (kept for completeness)."
+    "poster": "clips/title_card_6.jpg"
   },
   {
-    "id": "title-card-v7",
-    "title": "Title card — V7",
+    "id": "title-card-7",
+    "title": "Title card — idea 7",
     "file": "clips/title_card_7.mp4",
-    "poster": "clips/title_card_7.jpg",
-    "source": "Title-card candidate render (1916×1080, 10s)",
-    "notes": "Slower write-on — the lettering finishes near the end of the clip rather than holding."
+    "poster": "clips/title_card_7.jpg"
   },
   {
-    "id": "title-card-v8",
-    "title": "Title card — V8",
+    "id": "title-card-8",
+    "title": "Title card — idea 8",
     "file": "clips/title_card_8.mp4",
-    "poster": "clips/title_card_8.jpg",
-    "source": "Title-card candidate render (1916×1080, 10s)",
-    "notes": "Slower write-on variant; lettering completes near the end."
+    "poster": "clips/title_card_8.jpg"
   },
   {
-    "id": "title-card-v9",
-    "title": "Title card — V9",
+    "id": "title-card-9",
+    "title": "Title card — idea 9",
     "file": "clips/title_card_9.mp4",
-    "poster": "clips/title_card_9.jpg",
-    "source": "Title-card candidate render (1280×720, 10s)",
-    "notes": "720p variant."
+    "poster": "clips/title_card_9.jpg"
   },
   {
-    "id": "title-card-v10",
-    "title": "Title card — V10",
+    "id": "title-card-10",
+    "title": "Title card — idea 10",
     "file": "clips/title_card_10.mp4",
-    "poster": "clips/title_card_10.jpg",
-    "source": "Title-card candidate render (1280×720, 5s)",
-    "notes": "Shortest cut — a faster write-on at half the length."
+    "poster": "clips/title_card_10.jpg"
   },
   {
     "id": "scene1",
