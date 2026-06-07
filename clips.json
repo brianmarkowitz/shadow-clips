@@ -22,7 +22,7 @@
     "notes": "Holmes faces front, turns to profile, then walks frame-right and exits. Plain single-subject silhouette.",
     "review": {
       "projectionist": "approved",
-      "director": "pending"
+      "director": "approved"
     }
   },
   {
@@ -37,7 +37,7 @@
     "notes": "Moriarty stands menacing at the table, then walks frame-left and exits. Plain single-subject silhouette.",
     "review": {
       "projectionist": "approved",
-      "director": "pending"
+      "director": "approved"
     }
   },
   {
@@ -52,7 +52,7 @@
     "notes": "Moriarty enters frame-left, walks to centre, holds centre menacing/gesturing, then walks frame-right. Plain single-subject silhouette. Walk-in/out leg-gap timing de-popped so the legs separate on the same frame as the source instead of snapping open a couple frames late.",
     "review": {
       "projectionist": "approved",
-      "director": "pending"
+      "director": "approved"
     }
   },
   {
@@ -65,7 +65,7 @@
     "notes": "Runway-flicker version, full: real moving Moriarty HARD-CUTS into the runway flicker transition (its glow/grain look kept), which HARD-CUTS into the real Ghost footage for the hood-off and playout. Both seams are size/position-matched and the soft floor is carried across all three parts, so it reads as one continuous shot.",
     "review": {
       "projectionist": "approved",
-      "director": "pending"
+      "director": "approved"
     }
   },
   {
@@ -78,7 +78,7 @@
     "notes": "Trimmed: opens on Moriarty solo, Holmes enters, the grapple at the falls, the deerstalker falls and lands, ending on the fallen deerstalker. Single union silhouette.",
     "review": {
       "projectionist": "approved",
-      "director": "pending"
+      "director": "approved"
     }
   },
   {
@@ -93,7 +93,7 @@
     "notes": "Moriarty stands center and reaches his right arm toward off-frame Holmes. Plain single-subject silhouette.",
     "review": {
       "projectionist": "approved",
-      "director": "pending"
+      "director": "approved"
     }
   },
   {
@@ -187,8 +187,8 @@
     "source": "IMG_2158.MOV (cut f8288–8794, 507 frames)",
     "notes": "Silhouette of the raw clip above. He walks frame-right to frame-left and exits; legs read as an open/merged shadow through the stride.",
     "review": {
-      "projectionist": "pending",
-      "director": "pending"
+      "projectionist": "approved",
+      "director": "approved"
     }
   },
   {
@@ -208,8 +208,8 @@
     "source": "IMG_2158.MOV (cut f12096–12598, 503 frames)",
     "notes": "Silhouette of the raw clip above. The held book reads in the silhouette.",
     "review": {
-      "projectionist": "pending",
-      "director": "pending"
+      "projectionist": "approved",
+      "director": "approved"
     }
   },
   {
@@ -229,8 +229,8 @@
     "source": "IMG_2158.MOV (cut f14980–15360, 381 frames)",
     "notes": "Silhouette of the raw clip above.",
     "review": {
-      "projectionist": "pending",
-      "director": "pending"
+      "projectionist": "approved",
+      "director": "approved"
     }
   },
   {
@@ -250,8 +250,8 @@
     "source": "IMG_2158.MOV (cut f15723–16209, 487 frames)",
     "notes": "Silhouette of the raw clip above.",
     "review": {
-      "projectionist": "pending",
-      "director": "pending"
+      "projectionist": "approved",
+      "director": "approved"
     }
   },
   {
@@ -271,8 +271,8 @@
     "source": "IMG_2158.MOV (cut f17570–17891, 322 frames)",
     "notes": "Silhouette of the raw clip above. The wide arm-spread reads cleanly.",
     "review": {
-      "projectionist": "pending",
-      "director": "pending"
+      "projectionist": "approved",
+      "director": "approved"
     }
   },
   {
