@@ -163,6 +163,10 @@
   .section-head { grid-column: 1 / -1; margin: 12px 0 -6px; padding: 16px 4px 0; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
   .section-head h2 { margin: 0 0 5px; font-size: 1.18rem; font-weight: 650; }
   .section-head p { margin: 0; color: var(--muted); font-size: .9rem; max-width: 780px; }
+  /* ---- big illustrated banner divider (carries its own title) ---- */
+  .section-head.has-banner { border-top: none; padding-top: 6px; margin-top: 30px; }
+  .section-head .section-banner { display: block; width: 100%; height: auto; border-radius: 12px;
+    margin: 0 0 12px; border: 1px solid var(--line); }
   .badge.raw { color: #e7ecff; background: rgba(120,140,220,.18); border: 1px solid #5b6bb0; }
   #toc .toc-section { margin-top: 16px; color: var(--accent); font-weight: 650; font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; border-left-color: transparent; }
   #toc .toc-section:hover { color: #fff; }
@@ -261,8 +265,12 @@ function loadClips(){
         if (c.section) {
           const head = document.createElement('div');
           head.id = id;
-          head.className = 'section-head';
-          head.innerHTML = `<h2>${esc(c.section)}</h2>` + (c.note ? `<p>${esc(c.note)}</p>` : '');
+          head.className = 'section-head' + (c.banner ? ' has-banner' : '');
+          // A banner image carries its own heading, so skip the text <h2> when present.
+          const headInner = c.banner
+            ? `<img class="section-banner" src="${esc(c.banner)}" alt="${esc(c.section)}">`
+            : `<h2>${esc(c.section)}</h2>`;
+          head.innerHTML = headInner + (c.note ? `<p>${esc(c.note)}</p>` : '');
           g.appendChild(head);
           const liS = document.createElement('li');
           liS.innerHTML = `<a href="#${id}" data-target="${id}" class="toc-section">${esc(c.section)}</a>`;

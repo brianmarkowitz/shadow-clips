@@ -99,6 +99,7 @@
   {
     "section": "Title card — other ideas",
     "id": "title-card-others",
+    "banner": "assets/divider_extras.jpg",
     "note": "Eight more title-card candidates, each from a different AI video generator (named in its Source line, taken from the original filename). All share the same design — the cursive title hand-writing on beside a Holmes silhouette with drifting watercolor mist — so they differ mainly in the generator, the resolution/sharpness, and how fast the lettering draws on. Two prompt wordings were used: a \"black on white — animate the text\" prompt and a \"title card for a theater production of\" prompt."
   },
   {
