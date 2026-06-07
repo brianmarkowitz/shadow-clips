@@ -2,7 +2,7 @@
   {
     "section": "Opening",
     "id": "opening",
-    "note": "Plays before the title card — an animated Holmes silhouette portrait that holds on stage as the house settles."
+    "note": "Plays before the title card — an animated Holmes silhouette portrait that holds on stage as the house settles. The chosen title card follows on the same row; eight more title-card candidates are further down under \"Title card — other ideas\"."
   },
   {
     "id": "opening-smoking-pipe",
@@ -11,11 +11,6 @@
     "poster": "clips/opening_smoking_pipe.jpg",
     "source": "AI-generated · 1920×1080 · 24fps · ~28.9s",
     "notes": "Ornate gilt-framed Holmes silhouette smoking a pipe on a dark ground. The animated intro plays for ~8.9s, then the final frame holds for 20s so it can sit on stage before the title card. The generator's corner watermark was removed."
-  },
-  {
-    "section": "Title card",
-    "id": "title-card",
-    "note": "The opening title card for the show — this is the pick. Eight more candidates (each from a different AI video generator) are further down under \"Title card — other ideas\"."
   },
   {
     "id": "title-card-seedance2-bw",
