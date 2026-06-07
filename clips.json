@@ -280,6 +280,22 @@
     "note": "Alternatives explored for the Moriarty->Ghost transition (p.76). V9 (the runway hard-cut with the real moving Moriarty front + real Ghost hood-off back) is the chosen Scene 4 above. The rest are kept for reference: V8 same but without the moving front; V7 runway with a fade; V1-V3 flicker-out then pop; V4-V6 accelerating flicker."
   },
   {
+    "id": "scene4cand_v10",
+    "title": "Scene 4 — candidate V10: floor unified (full front)",
+    "page": 76,
+    "file": "previews/scene4_v10_floor.mp4",
+    "source": "real Moriarty + runway_flicker.mp4 + real Ghost (IMG_2170)",
+    "notes": "V9 with the gray floor made CONTINUOUS — the runway's soft floor is carried onto the Moriarty and Ghost parts too, so it no longer pops in/out at the seams. Full ~9s moving-Moriarty front. Figures stay solid black."
+  },
+  {
+    "id": "scene4cand_v10t",
+    "title": "Scene 4 — candidate V10t: floor unified + trimmed front (~5s)",
+    "page": 76,
+    "file": "previews/scene4_v10t_floor_trim.mp4",
+    "source": "real Moriarty + runway_flicker.mp4 + real Ghost (IMG_2170)",
+    "notes": "Same as V10 but the moving-Moriarty front is trimmed from ~9s to ~5s (opens with him already moving). Pick whichever front length you like — easy to set anywhere between."
+  },
+  {
     "id": "scene4cand_v7",
     "title": "Scene 4 — candidate V7: “Runway flicker” (fade version)",
     "page": 76,
