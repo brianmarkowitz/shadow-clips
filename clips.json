@@ -6,11 +6,11 @@
   },
   {
     "id": "title-card-seedance2-bw",
-    "title": "Title card — Seedance 2.0 (chosen)",
-    "file": "clips/tc_seedance2_bw.mp4",
-    "poster": "clips/tc_seedance2_bw.jpg",
-    "source": "Seedance 2.0 · 1920×1080 · 10.1s · 24fps · prompt: black-on-white \"animate the text\"",
-    "notes": "The pick. Made with the Seedance 2.0 generator from the black-on-white \"animate the text 'The Reluctant Resurrection of Sherlock Holmes'\" prompt. The cursive title hand-writes on over the first part of the clip, then holds while the watercolor mist drifts past the Holmes silhouette."
+    "title": "Title card — Seedance 2.0 (chosen, looped for show)",
+    "file": "clips/tc_seedance2_bw_looped.mp4",
+    "poster": "clips/tc_seedance2_bw_looped.jpg",
+    "source": "Seedance 2.0 · 1920×1080 · 24fps · 10.1s base, looped to ~2:09 for the show",
+    "notes": "The pick — show version, extended to hold on stage. Made with the Seedance 2.0 generator from the black-on-white \"animate the text 'The Reluctant Resurrection of Sherlock Holmes'\" prompt. The cursive title hand-writes on once over the first ~8.7s, then holds for ~2 minutes: a tiny calm window of the drifting mist ping-pongs so the atmosphere keeps moving without the bigger smoke billow repeating. Audio plays once (music + the pen scribble during the write-on) and the final note is held and faded out gently, then silence. The original 10s base render is kept at clips/tc_seedance2_bw.mp4."
   },
   {
     "id": "scene1",
