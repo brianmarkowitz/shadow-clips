@@ -9,8 +9,8 @@
     "title": "Opening — Holmes portrait (smoking pipe)",
     "file": "clips/opening_smoking_pipe.mp4",
     "poster": "clips/opening_smoking_pipe.jpg",
-    "source": "AI-generated · 1920×1080 · 24fps · ~29.4s · clean loop",
-    "notes": "Ornate gilt-framed Holmes silhouette smoking a pipe on a dark ground. The animated intro plays for ~8.9s, holds, then gently dissolves back to the exact opening frame so it loops seamlessly on stage before the title card. The generator's corner watermark was removed."
+    "source": "AI-generated · 1920×1080 · 24fps · ~31.9s · seamless loop (first frame = last frame, exact)",
+    "notes": "Ornate gilt-framed Holmes silhouette smoking a pipe on a dark ground. Re-cut into a true forward loop: a single smoke puff (~11.9s) billows out from the clean frame, peaks, and fully dissipates, then holds clean for 20s before repeating. The generator's dead ~18s mid-clip hold was removed and the puff that wrapped across the original start/end was stitched continuous; the first and last frames are byte-for-byte identical (verified) so it loops with no reset. Encoded lossless. The generator's corner watermark was removed."
   },
   {
     "id": "title-card-seedance2-bw",
