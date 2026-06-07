@@ -343,5 +343,17 @@
     "file": "previews/scene4_v6_chargematerialize.mp4",
     "source": "IMG_2170.MOV (recompose of the cached passes)",
     "notes": "Moriarty accelerates out (like V4), then the energy passes to the Ghost — she flickers IN fast and settles solid, rather than a single hard pop."
+  },
+  {
+    "section": "Images",
+    "id": "images",
+    "note": "Still images for the show."
+  },
+  {
+    "id": "wallpaper-upres",
+    "title": "Wallpaper (upres)",
+    "image": "images/wallpaper_upres.png",
+    "source": "wallpaper_upres.png · 1672×941",
+    "notes": "Uprezzed wallpaper still. Click the image to open it full size."
   }
 ]

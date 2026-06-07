@@ -87,6 +87,7 @@
   .card video {
     width: 100%; display: block; background: #fff; aspect-ratio: 16 / 9; object-fit: contain;
   }
+  .card img.photo { width: 100%; display: block; background: #fff; }
   .meta { padding: 14px 16px 18px; }
   .meta h2 { margin: 0 0 4px; font-size: 1.05rem; }
   .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
@@ -283,6 +284,34 @@ function loadClips(){
             (c.page ? `<span class="pg">Page ${esc(c.page)} · not built</span>` : '') + `</span>`;
           toc.appendChild(liP);
           return; // menu entry only
+        }
+
+        // ---- image card (a still photo, not a video) ----
+        if (c.image) {
+          const card = document.createElement('div');
+          card.id = id;
+          card.className = 'card';
+          card.innerHTML = `
+            <a href="${esc(c.image)}" target="_blank" rel="noopener">
+              <img class="photo" src="${esc(c.image)}" alt="${esc(c.title ?? '')}" loading="lazy">
+            </a>
+            <div class="meta">
+              <div class="badges">
+                ${c.page ? `<span class="badge">Page ${esc(c.page)}</span>` : ''}
+              </div>
+              <h2>${esc(c.title ?? c.image)}</h2>
+              ${c.source ? `<p class="src">Source: ${esc(c.source)}</p>` : ''}
+              ${c.notes ? `<p class="notes">${esc(c.notes)}</p>` : ''}
+              <div class="actions">
+                <a class="dl" href="${esc(c.image)}" download title="Download image" aria-label="Download image">${ICON_DOWNLOAD}</a>
+              </div>
+            </div>`;
+          g.appendChild(card);
+          const liI = document.createElement('li');
+          liI.innerHTML = `<a href="#${id}" data-target="${id}">${esc(c.title ?? c.image)}` +
+            (c.page ? `<span class="pg">Page ${esc(c.page)}</span>` : '') + `</a>`;
+          toc.appendChild(liI);
+          return;
         }
 
         const card = document.createElement('div');
