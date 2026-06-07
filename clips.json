@@ -62,7 +62,7 @@
     "file": "clips/scene4_seance_runway.mp4",
     "poster": "clips/scene4_seance_runway.jpg",
     "source": "real Moriarty (IMG_2170) + runway_flicker.mp4 + real Ghost (IMG_2170)",
-    "notes": "Runway-flicker version, full: real moving Moriarty HARD-CUTS into the runway flicker transition (its glow/grain look kept), which HARD-CUTS into the real Ghost footage for the hood-off and playout. Both seams are size/position-matched so it reads as one continuous shot.",
+    "notes": "Runway-flicker version, full: real moving Moriarty HARD-CUTS into the runway flicker transition (its glow/grain look kept), which HARD-CUTS into the real Ghost footage for the hood-off and playout. Both seams are size/position-matched and the soft floor is carried across all three parts, so it reads as one continuous shot.",
     "review": {
       "projectionist": "approved",
       "director": "pending"
@@ -277,15 +277,7 @@
   },
   {
     "section": "Scene 4 — flicker redesign (candidates for review)",
-    "note": "Alternatives explored for the Moriarty->Ghost transition (p.76). V9 (the runway hard-cut with the real moving Moriarty front + real Ghost hood-off back) is the chosen Scene 4 above. The rest are kept for reference: V8 same but without the moving front; V7 runway with a fade; V1-V3 flicker-out then pop; V4-V6 accelerating flicker."
-  },
-  {
-    "id": "scene4cand_v10",
-    "title": "Scene 4 — candidate V10: floor unified (full front)",
-    "page": 76,
-    "file": "previews/scene4_v10_floor.mp4",
-    "source": "real Moriarty + runway_flicker.mp4 + real Ghost (IMG_2170)",
-    "notes": "V9 with the gray floor made CONTINUOUS — the runway's soft floor is carried onto the Moriarty and Ghost parts too, so it no longer pops in/out at the seams. Full ~9s moving-Moriarty front. Figures stay solid black."
+    "note": "Alternatives explored for the Moriarty->Ghost transition (p.76). V10 (full moving front + unified floor) is the chosen Scene 4 above. Kept here for reference: V10t same with a trimmed ~5s front; V9 pre-floor-fix; V8 no moving front; V7 runway with a fade; V1-V3 flicker-out then pop; V4-V6 accelerating flicker."
   },
   {
     "id": "scene4cand_v10t",
