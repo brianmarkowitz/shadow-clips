@@ -355,5 +355,12 @@
     "image": "images/wallpaper_upres.png",
     "source": "wallpaper_upres.png · 1672×941",
     "notes": "Uprezzed wallpaper still. Click the image to open it full size."
+  },
+  {
+    "id": "wallpaper-black-white",
+    "title": "Wallpaper (black & white)",
+    "image": "images/wallpaper_black_white.png",
+    "source": "wallpaper_black_white.png · 1672×941",
+    "notes": "Black-and-white version of the wallpaper. Click the image to open it full size."
   }
 ]
