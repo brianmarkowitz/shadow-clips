@@ -175,14 +175,7 @@
 
   @media (max-width: 760px) {
     .layout { display: block; }
-    #sidebar { width: auto; position: static; height: auto; border-right: none;
-      border-bottom: 1px solid var(--line); padding: 16px; }
-    #toc { display: flex; flex-wrap: wrap; gap: 6px; }
-    #toc a { border-left: none; border-bottom: 3px solid transparent; padding: 7px 10px; }
-    #toc a.active { border-left: none; border-bottom-color: var(--accent); }
-    #toc a .pg { display: none; }
-    #toc .tocitem { border-left: none; padding: 7px 10px; }
-    #toc .tocitem .pg { display: none; }
+    #sidebar { display: none; }       /* no left menu on mobile */
     main { grid-template-columns: 1fr; }
   }
 </style>
