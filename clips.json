@@ -9,8 +9,8 @@
     "title": "Opening — Holmes portrait (smoking pipe)",
     "file": "clips/opening_smoking_pipe.mp4",
     "poster": "clips/opening_smoking_pipe.jpg",
-    "source": "AI-generated · 1920×1080 · 24fps · ~31.9s · seamless loop (first frame = last frame, exact)",
-    "notes": "Ornate gilt-framed Holmes silhouette smoking a pipe on a dark ground. Re-cut into a true forward loop: a single smoke puff (~11.9s) billows out from the clean frame, peaks, and fully dissipates, then holds clean for 20s before repeating. The generator's dead ~18s mid-clip hold was removed and the puff that wrapped across the original start/end was stitched continuous; the first and last frames are byte-for-byte identical (verified) so it loops with no reset. Encoded lossless. The generator's corner watermark was removed."
+    "source": "AI-generated · 1920×1080 · 24fps · ~31.5s · crossfade loop (loop point on the clean frame, first frame = last frame exact)",
+    "notes": "Ornate gilt-framed Holmes silhouette smoking a pipe on a dark ground. Rebuilt as a clean crossfade loop using only the smooth animated smoke (the generator's janky mid-clip dissolve region and its dead ~18s hold were dropped). Cycle: a static clean frame, the smoke gently dissolves in (~1s), billows to a full plume, then dissipates back to clean and holds clean for 20s. The loop point sits on the static clean frame so there is no visible cut, and the first and last frames are byte-for-byte identical (verified). Encoded lossless. The generator's corner watermark was removed."
   },
   {
     "id": "title-card-seedance2-bw",
